@@ -1,0 +1,197 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+% ============================================
+% Pakete
+% ============================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\sisetup{locale=DE, per-mode=fraction}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{fontawesome5}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, decorations.pathmorphing}
+\usepackage{scrlayer-scrpage}
+\usepackage{geometry}
+\geometry{left=2cm, right=2cm, top=2.5cm, bottom=2cm, headheight=1.5cm}
+
+% ============================================
+% Kopf- und Fußzeile
+% ============================================
+\clearpairofpagestyles
+\ihead{\includegraphics[height=1cm]{logo.jpeg}}
+\chead{\textbf{Physik-LK 11NP}}
+\ohead{\textbf{Infoblatt}}
+\cfoot{}
+\KOMAoptions{headsepline=0.4pt}
+
+% ============================================
+% tcolorbox-Definitionen
+% ============================================
+\newtcolorbox{formelbox}[1][]{
+	colback=blue!5!white,
+	colframe=blue!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{square-root-alt} Formel},
+	#1
+}
+
+\newtcolorbox{infobox}[1][]{
+	colback=gray!5!white,
+	colframe=gray!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{info-circle} Merke},
+	#1
+}
+
+\newtcolorbox{schrittbox}[1][]{
+	colback=orange!5!white,
+	colframe=orange!75!black,
+	fonttitle=\bfseries,
+	#1
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+
+% ============================================
+% Dokument
+% ============================================
+\begin{document}
+	
+	\begin{center}
+		{\LARGE\bfseries Herleitung der Pendelgleichung}\\[0.3cm]
+		{\large Warum gilt $T = 2\pi\sqrt{l/g}$\,?}
+	\end{center}
+	\begin{minipage}[t]{0.58\textwidth}
+		
+		\begin{schrittbox}[title={\faIcon{shoe-prints} Schritt 1: Rücktreibende Kraft}]
+			Bei kleiner Auslenkung $s$ aus der Ruhelage wirkt auf die Pendelmasse die Komponente der Gewichtskraft:
+			\[F = -mg \cdot \sin\varphi \approx -mg \cdot \frac{s}{l}\]
+			Das Minuszeichen zeigt: Die Kraft zeigt immer zur Ruhelage zurück.
+		\end{schrittbox}
+		
+		\vspace{0.2cm}
+		
+		\begin{schrittbox}[title={\faIcon{shoe-prints} Schritt 2: Beschleunigung (Newton)}]
+			Mit dem 2. Newton'schen Gesetz $F = m \cdot a$:
+			\[m \cdot a = -mg \cdot \frac{s}{l}\]
+			Die Masse $m$ kürzt sich heraus:
+			\[\boxed{a = -\frac{g}{l} \cdot s}\]
+		\end{schrittbox}
+		
+		\vspace{0.2cm}
+		
+		\begin{schrittbox}[title={\faIcon{shoe-prints} Schritt 3: Harmonische Schwingung erkennen}]
+			Die Beschleunigung ist \textbf{proportional zur Auslenkung} und \textbf{entgegengerichtet} (Minuszeichen). Das ist die Bedingung für eine \textbf{harmonische Schwingung}.
+			
+			Allgemein gilt für harmonische Schwingungen:
+			\[s(t) = s_0 \cdot \sin\left(\frac{2\pi}{T} \cdot t\right)\]
+			
+			Die Beschleunigung ist die zweite Ableitung des Weges:
+			\[a(t) = \ddot{s}(t) = -s_0 \cdot \left(\frac{2\pi}{T}\right)^2 \cdot \sin\left(\frac{2\pi}{T} \cdot t\right) = -\frac{4\pi^2}{T^2} \cdot s(t)\]
+			
+			Daraus folgt der Zusammenhang:
+			\[\boxed{\frac{a}{s} = -\frac{4\pi^2}{T^2}}\]
+		\end{schrittbox}
+		
+		\vspace{0.2cm}
+		
+		\begin{schrittbox}[title={\faIcon{shoe-prints} Schritt 4: Gleichsetzen und Auflösen}]
+			\[-\frac{g}{l} = -\frac{4\pi^2}{T^2}\]
+			Nach $T^2$ auflösen:
+			\[T^2 = \frac{4\pi^2 \cdot l}{g}\]
+			Wurzel ziehen:
+			\[\boxed{T = 2\pi\sqrt{\frac{l}{g}}}\]
+		\end{schrittbox}
+		
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.38\textwidth}
+		\vspace{0pt}
+		
+		% Pendelzeichnung
+		\begin{center}
+			\begin{tikzpicture}[scale=0.9]
+				% Stativ
+				\draw[thick, fill=gray!40] (-1.5,4) rectangle (1.5,4.12);
+				\fill[black] (0,4) circle (0.06);
+				
+				% Ruhelage
+				\draw[dashed, gray] (0,4) -- (0,0.5);
+				\draw[gray!40] (0,0.3) circle (0.25);
+				
+				% Faden
+				\draw[thick] (0,4) -- (1.3,0.8);
+				
+				% Kugel
+				\fill[blue!60] (1.3,0.8) circle (0.25);
+				\draw[blue!80, thick] (1.3,0.8) circle (0.25);
+				
+				% Pendellänge
+				\draw[<->, thick, red!70!black] (-0.4,4) -- (-0.4,0.3);
+				\node[left, red!70!black] at (-0.4,2.15) {$l$};
+				
+				% Winkel
+				\draw[thick] (0,3.3) arc (270:285:0.7);
+				\node at (0.2,3.0) {$\varphi$};
+				
+				% Auslenkung s
+				\draw[<->, thick, green!60!black] (0,0) -- (1.3,0);
+				\node[below, green!60!black] at (0.65,-0.1) {$s$};
+				
+				% Kräfte
+				\draw[->, very thick, black] (1.3,0.8) -- (1.3,-0.4);
+				\node[right] at (1.35,-0.1) {$F_G = mg$};
+				
+				\draw[->, very thick, red!70!black] (1.3,0.8) -- (0.5,0.5);
+				\node[left, red!70!black] at (0.4,0.5) {$F$};
+				
+			\end{tikzpicture}
+		\end{center}
+		
+		\vspace{0.3cm}
+		
+		\begin{infobox}[title={\faIcon{info-circle} Kleinwinkelnäherung}]
+			Für kleine Winkel gilt:
+			\[\sin\varphi \approx \varphi = \frac{s}{l}\]
+			(Winkel im Bogenmaß!)
+			
+			Gültig für $\varphi < 10°$.
+		\end{infobox}
+		
+		\vspace{0.3cm}
+		
+		\begin{infobox}[title={\faIcon{info-circle} Beobachtung}]
+			Die Masse $m$ kürzt sich heraus!
+			
+			$T$ hängt \textbf{nur} von $l$ und $g$ ab.
+		\end{infobox}
+		
+	\end{minipage}
+	
+	\vspace{0.4cm}
+	
+	\begin{formelbox}[title={\faIcon{square-root-alt} Ergebnis: Schwingungsdauer des Fadenpendels}]
+		\begin{center}
+			{\Large $T = 2\pi\sqrt{\dfrac{l}{g}}$}
+			\hspace{2cm}
+			umgestellt: 
+			\hspace{2cm}
+			{\Large $g = \dfrac{4\pi^2 \cdot l}{T^2}$}
+		\end{center}
+		
+		\vspace{0.2cm}
+		
+		\begin{tabular}{ll}
+			$T$ & Schwingungsdauer in s (Zeit für eine vollständige Hin- und Herbewegung) \\
+			$l$ & Pendellänge in m (Aufhängepunkt bis Kugelmittelpunkt) \\
+			$g$ & Erdbeschleunigung in $\si{\metre\per\second\squared}$ (Literaturwert: $\SI{9,81}{\metre\per\second\squared}$)
+		\end{tabular}
+	\end{formelbox}
+	
+\end{document}

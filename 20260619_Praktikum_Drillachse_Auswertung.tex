@@ -1,0 +1,516 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+% ============================================
+% Pakete
+% ============================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\sisetup{locale=DE, per-mode=fraction}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{fontawesome5}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta, positioning}
+\usepackage{scrlayer-scrpage}
+\usepackage{geometry}
+\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=2.5cm, headheight=1.5cm}
+
+% ============================================
+% Kopf- und Fußzeile
+% ============================================
+\clearpairofpagestyles
+\ihead{\includegraphics[height=1cm]{Praktikum/logo.jpeg}}
+\chead{\textbf{Physik-LK 11NP}}
+\ohead{\textbf{19.\,Juni\,2026}}
+\cfoot{\pagemark}
+\KOMAoptions{headsepline=0.4pt}
+
+% ============================================
+% tcolorbox-Definitionen
+% ============================================
+\newtcolorbox{formelbox}[1][]{
+	colback=blue!5!white,
+	colframe=blue!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{square-root-alt} Formel},
+	#1
+}
+
+\newtcolorbox{hilfebox}[1][]{
+	colback=green!5!white,
+	colframe=green!60!black,
+	fonttitle=\bfseries,
+	title={\faIcon{lightbulb} Hinweis},
+	#1
+}
+
+\newtcolorbox{infobox}[1][]{
+	colback=gray!5!white,
+	colframe=gray!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{info-circle} Information},
+	#1
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+% ============================================
+% Dokumentbeginn
+% ============================================
+\begin{document}
+
+\begin{center}
+	{\LARGE\bfseries Musterauswertung: Drillachse}\\[0.5cm]
+	{\large Grafische Bestimmung von $m$ und $J_0$ aus realen Messdaten}
+\end{center}
+
+\vspace{0.3cm}
+
+% ============================================
+% Winkelrichtgröße
+% ============================================
+\section*{Bestimmung der Winkelrichtgröße $D_r$}
+
+Die Drillachse wird um $\alpha = 180° = \pi\;\text{rad}$ ausgelenkt.
+Mit einem Kraftmesser wird die Rückstellkraft $F$ in verschiedenen Abständen $d$ vom Drehpunkt gemessen.
+Im Gleichgewicht gilt:
+
+\begin{formelbox}[title={\faIcon{square-root-alt} Winkelrichtgröße}]
+	\[
+	M = F \cdot d = D_r \cdot \alpha \qquad\Rightarrow\qquad D_r = \frac{F \cdot d}{\alpha} = \frac{F \cdot d}{\pi}
+	\]
+\end{formelbox}
+
+\subsection*{Feder 1}
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		$d$ / cm & $F$ / N & $M = F \cdot d$ / Nm & $D_r = M/\pi$ / (Nm/rad) \\
+		\hline
+		5  & 1,76 & 0,0880 & 0,0280 \\
+		\hline
+		10 & 0,86 & 0,0860 & 0,0274 \\
+		\hline
+		15 & 0,58 & 0,0870 & 0,0277 \\
+		\hline
+		20 & 0,42 & 0,0840 & 0,0267 \\
+		\hline
+		25 & 0,36 & 0,0900 & 0,0286 \\
+		\hline
+		30 & 0,30 & 0,0900 & 0,0286 \\
+		\hline
+		\multicolumn{3}{|r|}{\textbf{Mittelwert:}} & $\boldsymbol{D_r = \SI{0,028}{Nm/rad}}$ \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection*{Feder 2}
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		$d$ / cm & $F$ / N & $M = F \cdot d$ / Nm & $D_r = M/\pi$ / (Nm/rad) \\
+		\hline
+		5  & 1,64 & 0,0820 & 0,0261 \\
+		\hline
+		10 & 0,82 & 0,0820 & 0,0261 \\
+		\hline
+		15 & 0,54 & 0,0810 & 0,0258 \\
+		\hline
+		20 & 0,42 & 0,0840 & 0,0267 \\
+		\hline
+		25 & 0,34 & 0,0850 & 0,0271 \\
+		\hline
+		30 & 0,28 & 0,0840 & 0,0267 \\
+		\hline
+		\multicolumn{3}{|r|}{\textbf{Mittelwert:}} & $\boldsymbol{D_r = \SI{0,026}{Nm/rad}}$ \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection*{Feder 3}
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		$d$ / cm & $F$ / N & $M = F \cdot d$ / Nm & $D_r = M/\pi$ / (Nm/rad) \\
+		\hline
+		5  & 2,30 & 0,1150 & 0,0366 \\
+		\hline
+		10 & 1,14 & 0,1140 & 0,0363 \\
+		\hline
+		15 & 0,76 & 0,1140 & 0,0363 \\
+		\hline
+		20 & 0,60 & 0,1200 & 0,0382 \\
+		\hline
+		25 & 0,47 & 0,1175 & 0,0374 \\
+		\hline
+		30 & 0,38 & 0,1140 & 0,0363 \\
+		\hline
+		\multicolumn{3}{|r|}{\textbf{Mittelwert:}} & $\boldsymbol{D_r = \SI{0,037}{Nm/rad}}$ \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection*{Vergleich}
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|l|c|c|}
+		\hline
+		& $D_r$ / (Nm/rad) & Charakter \\
+		\hline
+		Feder 1 & 0,028 & mittel \\
+		\hline
+		Feder 2 & 0,026 & weichste \\
+		\hline
+		Feder 3 & 0,037 & steifste \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{hilfebox}[title={\faIcon{lightbulb} Qualität der Messungen}]
+	Bei allen drei Federn ist das Drehmoment $M = F \cdot d$ nahezu \textbf{konstant} -- unabhängig vom Abstand $d$. Das bestätigt den linearen Zusammenhang $M = D_r \cdot \alpha$ und zeigt, dass die Messungen sauber durchgeführt wurden.
+\end{hilfebox}
+
+\newpage
+
+% ============================================
+% Messdaten (Schwingungsdauern)
+% ============================================
+\section*{Messdaten -- Schwingungsdauern}
+
+Richtgröße: $D_r = \SI{0,030}{Nm/rad}$
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		\textbf{Nr.} & $r$ / m & $r^2$ / ($10^{-3}\,$m$^2$) & $\overline{T}$ / s & $T^2$ / s$^2$ & $J$ / ($10^{-3}\,$kg$\cdot$m$^2$) \\
+		\hline
+		1 & 0,04 & 1,60 & 2,544 & 6,472 & 4,92 \\
+		\hline
+		2 & 0,08 & 6,40 & 3,293 & 10,844 & 8,24 \\
+		\hline
+		3 & 0,12 & 14,40 & 4,279 & 18,310 & 13,91 \\
+		\hline
+		4 & 0,16 & 25,60 & 5,317 & 28,270 & 21,48 \\
+		\hline
+		5 & 0,20 & 40,00 & 6,372 & 40,603 & 30,85 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{formelbox}[title={\faIcon{square-root-alt} Berechnung von $J$}]
+	\[
+	J = \frac{D_r \cdot T^2}{4\pi^2} = \frac{0{,}030 \cdot T^2}{39{,}478}
+	\]
+	Beispiel für Messung 1: $J = \dfrac{0{,}030 \cdot 6{,}472}{39{,}478} = 4{,}92 \cdot 10^{-3}\;\text{kg}\cdot\text{m}^2$
+\end{formelbox}
+
+% ============================================
+% Diagramm
+% ============================================
+\section*{$J$-$r^2$-Diagramm}
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    width=15cm, height=11cm,
+    xlabel={$r^2$ / ($10^{-3}\,$m$^2$)},
+    ylabel={$J$ / ($10^{-3}\,$kg$\cdot$m$^2$)},
+    xmin=0, xmax=45,
+    ymin=0, ymax=35,
+    grid=both,
+    minor grid style={gray!15},
+    major grid style={gray!40},
+    xtick={0,5,...,45},
+    ytick={0,5,...,35},
+    minor xtick={0,2.5,...,45},
+    minor ytick={0,2.5,...,35},
+    tick label style={font=\small},
+    mark size=3pt,
+    legend style={at={(0.02,0.98)}, anchor=north west, font=\small},
+]
+
+% Messpunkte
+\addplot[only marks, mark=x, thick, blue, mark size=4pt] coordinates {
+    (1.6, 4.92)
+    (6.4, 8.24)
+    (14.4, 13.91)
+    (25.6, 21.48)
+    (40.0, 30.85)
+};
+\addlegendentry{Messpunkte}
+
+% Ausgleichsgerade: lineare Regression
+% J = 0,6753 * r^2 + 3,74
+\addplot[red, thick, domain=0:44] {0.6753*x + 3.74};
+\addlegendentry{Ausgleichsgerade}
+
+% Steigungsdreieck
+\draw[dashed, thick, green!60!black] (axis cs:5,7.12) -- (axis cs:40,7.12) -- (axis cs:40,30.75);
+\node[below, green!60!black, font=\small] at (axis cs:22.5,7.12) {$\Delta r^2 = 35{,}0$};
+\node[right, green!60!black, font=\small] at (axis cs:40,18.9) {$\Delta J = 23{,}6$};
+
+% y-Achsenabschnitt markieren
+\draw[<-, thick, orange] (axis cs:1.0,3.74) -- (axis cs:6,1.5);
+\node[right, orange, font=\small] at (axis cs:6,1.5) {$J_0 \approx 3{,}7$};
+
+% Fehlerbalken (ca. 3% von J)
+\draw[blue!60, thick] (axis cs:1.6,4.77) -- (axis cs:1.6,5.07);
+\draw[blue!60] (axis cs:1.2,4.77) -- (axis cs:2.0,4.77);
+\draw[blue!60] (axis cs:1.2,5.07) -- (axis cs:2.0,5.07);
+
+\draw[blue!60, thick] (axis cs:6.4,7.99) -- (axis cs:6.4,8.49);
+\draw[blue!60] (axis cs:5.8,7.99) -- (axis cs:7.0,7.99);
+\draw[blue!60] (axis cs:5.8,8.49) -- (axis cs:7.0,8.49);
+
+\draw[blue!60, thick] (axis cs:14.4,13.49) -- (axis cs:14.4,14.33);
+\draw[blue!60] (axis cs:13.6,13.49) -- (axis cs:15.2,13.49);
+\draw[blue!60] (axis cs:13.6,14.33) -- (axis cs:15.2,14.33);
+
+\draw[blue!60, thick] (axis cs:25.6,20.84) -- (axis cs:25.6,22.12);
+\draw[blue!60] (axis cs:24.6,20.84) -- (axis cs:26.6,20.84);
+\draw[blue!60] (axis cs:24.6,22.12) -- (axis cs:26.6,22.12);
+
+\draw[blue!60, thick] (axis cs:40.0,29.92) -- (axis cs:40.0,31.78);
+\draw[blue!60] (axis cs:38.8,29.92) -- (axis cs:41.2,29.92);
+\draw[blue!60] (axis cs:38.8,31.78) -- (axis cs:41.2,31.78);
+
+% Extremgeraden
+\addplot[red!50, dashed, thick, domain=0:44] {0.72*x + 3.2};
+\addlegendentry{steilste Gerade}
+\addplot[blue!50!black, dashed, thick, domain=0:44] {0.63*x + 4.3};
+\addlegendentry{flachste Gerade}
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+% ============================================
+% Auswertung
+% ============================================
+\newpage
+\section*{Auswertung}
+
+\subsection*{Schritt 1: Steigung aus dem Diagramm}
+
+Steigungsdreieck (Punkte \textbf{auf der Geraden}):
+
+Punkt 1: $r^2 = 5{,}0$, \quad $J = 7{,}1$ \qquad
+Punkt 2: $r^2 = 40{,}0$, \quad $J = 30{,}7$
+
+\[
+k = \frac{\Delta J}{\Delta r^2} = \frac{(30{,}7 - 7{,}1) \cdot 10^{-3}}{(40{,}0 - 5{,}0) \cdot 10^{-3}} = \frac{23{,}6}{35{,}0} = \SI{0,674}{kg}
+\]
+
+\subsection*{Schritt 2: Masse und Eigenträgheitsmoment}
+
+\[
+\boxed{m = \frac{k}{2} = \frac{0{,}674}{2} = \SI{0,337}{kg}}
+\]
+
+\[
+\boxed{J_0 \approx 3{,}7 \cdot 10^{-3}\;\text{kg}\cdot\text{m}^2}
+\]
+
+\begin{hilfebox}[title={\faIcon{lightbulb} Was bedeutet $J_0$?}]
+	$J_0 = 3{,}7 \cdot 10^{-3}\;\text{kg}\cdot\text{m}^2$ ist das Eigenträgheitsmoment des Stabes \textbf{ohne} Zusatzmassen. Auch der leere Stab hat eine Massenverteilung und damit ein Trägheitsmoment!
+\end{hilfebox}
+
+\subsection*{Schritt 3: Vergleich mit der Waage}
+
+Die Massestücke wiegen: $m_\text{Waage} = \SI{0,238}{kg}$ (pro Stück).
+
+Relative Abweichung:
+\[
+\frac{|m_\text{Diagramm} - m_\text{Waage}|}{m_\text{Waage}} \cdot 100\,\%
+= \frac{|0{,}337 - 0{,}238|}{0{,}238} \cdot 100\,\% = \mathbf{41{,}6\,\%}
+\]
+
+\begin{infobox}[title={\faIcon{info-circle} Woher kommt die große Abweichung?}]
+	Die Masse $m$ hängt direkt von der verwendeten Richtgröße $D_r$ ab, denn alle $J$-Werte werden über $J = D_r \cdot T^2 / (4\pi^2)$ berechnet. Ändert man $D_r$, skalieren \textbf{alle} $J$-Werte und damit auch die Steigung proportional:
+
+	\[
+	m = \frac{k}{2} = \frac{1}{2} \cdot \frac{\Delta J}{\Delta r^2} \sim D_r
+	\]
+
+	Die Schüler hatten $D_r = \SI{0,030}{Nm/rad}$ angegeben. Die nachgemessenen Werte der drei Federn sind aber:
+
+	\vspace{0.3cm}
+	\begin{center}
+		\renewcommand{\arraystretch}{1.3}
+		\begin{tabular}{|l|c|c|c|}
+			\hline
+			& $D_r$ / (Nm/rad) & $m_\text{Diagramm}$ / kg & Abweichung \\
+			\hline
+			Feder 1 & 0,028 & $0{,}337 \times \frac{0{,}028}{0{,}030} = \SI{0,315}{kg}$ & $+32\,\%$ \\
+			\hline
+			Feder 2 & 0,026 & $0{,}337 \times \frac{0{,}026}{0{,}030} = \SI{0,292}{kg}$ & $+23\,\%$ \\
+			\hline
+			Feder 3 & 0,037 & $0{,}337 \times \frac{0{,}037}{0{,}030} = \SI{0,416}{kg}$ & $+75\,\%$ \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\vspace{0.3cm}
+	Keine der Federn liefert $m = \SI{0,238}{kg}$.
+	Für die korrekte Masse bräuchte man:
+	\[
+	D_{r,\text{ideal}} = D_{r,\text{verwendet}} \cdot \frac{m_\text{Waage}}{m_\text{Diagramm}} = 0{,}030 \cdot \frac{0{,}238}{0{,}337} = \SI{0,021}{Nm/rad}
+	\]
+
+	$\Rightarrow$ Mögliche Ursachen: Fehler bei der $D_r$-Messung (Kraftmesser-Kalibrierung, Reibung an der Drillachse, Winkel nicht exakt $180°$) oder systematischer Fehler bei der Zeitmessung.
+\end{infobox}
+
+% ============================================
+% Fehlerabschätzung
+% ============================================
+\section*{Fehlerabschätzung}
+
+\subsection*{Relativer Fehler der Zeitmessung}
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.8}
+	\begin{tabular}{|l|c|c|}
+		\hline
+		& \textbf{$r = \SI{0,04}{m}$} (kleinster) & \textbf{$r = \SI{0,20}{m}$} (größter) \\
+		\hline
+		$\overline{10\,T}$ & \SI{25,44}{s} & \SI{63,72}{s} \\
+		\hline
+		$\Delta T / T = \SI{0,3}{s} / \overline{10\,T}$ & $0{,}3 / 25{,}44 = \mathbf{1{,}18\,\%}$ & $0{,}3 / 63{,}72 = \mathbf{0{,}47\,\%}$ \\
+		\hline
+		$\Delta J / J \approx 2 \cdot \Delta T / T$ & $\mathbf{2{,}4\,\%}$ & $\mathbf{0{,}9\,\%}$ \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{infobox}[title={\faIcon{info-circle} Warum ist der Fehler bei kleinem $r$ größer?}]
+	Bei $r = \SI{4}{cm}$ schwingt die Drillachse \textbf{schnell} (kurze Periode). Die Reaktionszeit von $\pm\SI{0,3}{s}$ ist dann ein \textbf{großer Anteil} der Gesamtzeit. Bei $r = \SI{20}{cm}$ ist die Periode lang, und die gleiche Reaktionszeit fällt kaum ins Gewicht.
+
+	$\Rightarrow$ \textbf{Große Abstände liefern genauere Zeitmessungen!}
+\end{infobox}
+
+\subsection*{Fehlerbalken berechnen und einzeichnen}
+
+\textbf{Grundidee:} $\Delta(10T) \approx \pm\SI{0,3}{s}$ (Reaktionszeit), also $\Delta T = \pm\SI{0,03}{s}$.
+Da $J \sim T^2$, verdoppelt sich der relative Fehler: $\Delta J / J \approx 2 \cdot \Delta T / T$.
+
+\begin{formelbox}[title={\faIcon{square-root-alt} Fehlerbalken für jeden Messpunkt}]
+	\begin{enumerate}
+		\item Relativen Fehler berechnen: $\dfrac{\Delta J}{J} = 2 \cdot \dfrac{\Delta T}{T} = 2 \cdot \dfrac{0{,}03}{T}$
+		\item Absoluten Fehler berechnen: $\Delta J = J \cdot \dfrac{\Delta J}{J}$
+		\item Im Diagramm: senkrechten Strich von $(J - \Delta J)$ bis $(J + \Delta J)$ zeichnen
+	\end{enumerate}
+\end{formelbox}
+
+\textbf{Rechenbeispiel} (Messung 3, $r = \SI{12}{cm}$, $T = \SI{4,28}{s}$, $J = 13{,}91$):
+\[
+\frac{\Delta T}{T} = \frac{0{,}03}{4{,}28} = 0{,}70\,\% \qquad
+\frac{\Delta J}{J} = 2 \cdot 0{,}70\,\% = 1{,}4\,\% \qquad
+\Delta J = 0{,}014 \cdot 13{,}91 = \pm\,0{,}19
+\]
+$\Rightarrow$ Fehlerbalken von $13{,}72$ bis $14{,}10$ einzeichnen.
+
+\vspace{0.3cm}
+\textbf{Übersicht aller Fehlerbalken:}
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.6}
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\textbf{Nr.} & $T$ / s & $\Delta T/T$ & $\Delta J/J$ & $J$ & $\Delta J$ & \textbf{Balken von -- bis} \\
+		\hline
+		1 & 2,54 & 1,2\,\% & 2,4\,\% & 4,92 & $\pm 0{,}12$ & 4,80 -- 5,04 \\
+		\hline
+		2 & 3,29 & 0,9\,\% & 1,8\,\% & 8,24 & $\pm 0{,}15$ & 8,09 -- 8,39 \\
+		\hline
+		3 & 4,28 & 0,7\,\% & 1,4\,\% & 13,91 & $\pm 0{,}19$ & 13,72 -- 14,10 \\
+		\hline
+		4 & 5,32 & 0,6\,\% & 1,1\,\% & 21,48 & $\pm 0{,}24$ & 21,24 -- 21,72 \\
+		\hline
+		5 & 6,37 & 0,5\,\% & 0,9\,\% & 30,85 & $\pm 0{,}28$ & 30,57 -- 31,13 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{hilfebox}[title={\faIcon{lightbulb} So zeichnet man einen Fehlerbalken}]
+	An jedem Messpunkt einen \textbf{senkrechten Strich} mit kleinen waagerechten ``Häkchen'' oben und unten:
+	\begin{center}
+	\begin{tikzpicture}[scale=1.2]
+		\draw[thick, blue!60] (0,-0.6) -- (0,0.6);
+		\draw[blue!60] (-0.15,-0.6) -- (0.15,-0.6);
+		\draw[blue!60] (-0.15,0.6) -- (0.15,0.6);
+		\node[mark size=3pt] at (0,0) {\pgfuseplotmark{x}};
+		\node[right, font=\small] at (0.3,0) {Messpunkt $J$};
+		\node[right, font=\small, blue!60] at (0.3,0.6) {$J + \Delta J$};
+		\node[right, font=\small, blue!60] at (0.3,-0.6) {$J - \Delta J$};
+	\end{tikzpicture}
+	\end{center}
+\end{hilfebox}
+
+\subsection*{Extremgeraden-Methode}
+
+Aus dem Diagramm (steilste und flachste Gerade durch die Fehlerbalken):
+
+\[
+k_\text{max} = \SI{0,72}{kg} \qquad k_\text{min} = \SI{0,63}{kg}
+\]
+
+\[
+\Delta k = \frac{k_\text{max} - k_\text{min}}{2} = \frac{0{,}72 - 0{,}63}{2} = \SI{0,045}{kg}
+\]
+
+\begin{tcolorbox}[colback=yellow!10!white, colframe=yellow!50!black, width=\textwidth]
+	\centering
+	\textbf{Ergebnis mit Fehlerangabe}\\[0.4cm]
+	{\Large $m = \dfrac{k}{2} \pm \dfrac{\Delta k}{2} = (0{,}337 \pm 0{,}023)\;\text{kg}$}\\[0.4cm]
+	{\Large $J_0 = (3{,}7 \pm 0{,}5) \cdot 10^{-3}\;\text{kg}\cdot\text{m}^2$}
+\end{tcolorbox}
+
+% ============================================
+% Warum die Einzelvergleiche scheitern
+% ============================================
+\section*{Warum die Einzelpunkt-Methode scheitert}
+
+In den Schüler-Auswertungen wurden relative Fehler von \textbf{40--60\,\%} berechnet. Wie kommt das?
+
+\begin{enumerate}
+	\item Die Schüler haben $J_0$ abgezogen und dann $J_\text{Massen} = J_\text{ges} - J_0$ mit $J_\text{theo} = 2mr^2$ verglichen.
+
+	\item Das Problem: Bei kleinen $r$ ist $J_\text{Massen}$ eine \textbf{kleine Differenz zweier großer Zahlen}.
+
+	\textbf{Beispiel} (Messung 1, $r = \SI{4}{cm}$):
+	\[
+	J_\text{Massen} = J_\text{ges} - J_0 = 4{,}92 - 3{,}70 = 1{,}22 \cdot 10^{-3}\;\text{kg}\cdot\text{m}^2
+	\]
+	Schon ein kleiner Fehler in $J_0$ (z.\,B.\ $\pm 0{,}3$) verschiebt $J_\text{Massen}$ um $\pm 25\,\%$!
+
+	\item Außerdem sind die Massestücke \textbf{keine Punktmassen} -- sie haben eine Ausdehnung. Der Steiner'sche Satz liefert einen Zusatzterm, der bei kleinen $r$ relativ groß ist.
+\end{enumerate}
+
+\begin{hilfebox}[title={\faIcon{lightbulb} Die grafische Methode ist robuster!}]
+	\begin{itemize}
+		\item Sie braucht \textbf{kein vorher bekanntes} $J_0$ -- es ergibt sich automatisch aus dem $y$-Achsenabschnitt.
+		\item Zufällige Messfehler werden durch die Ausgleichsgerade \textbf{gemittelt}.
+		\item Die Steigung nutzt \textbf{alle} Messpunkte, nicht nur einen einzelnen.
+		\item Mit Extremgeraden erhält man eine \textbf{realistische Fehlerangabe}.
+	\end{itemize}
+	$\Rightarrow$ \textbf{Grafische Auswertung = wenige Prozent Fehler statt 40--60\,\%!}
+\end{hilfebox}
+
+\end{document}

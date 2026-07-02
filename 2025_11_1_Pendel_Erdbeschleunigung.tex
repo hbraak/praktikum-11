@@ -1,0 +1,474 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+% ============================================
+% Pakete
+% ============================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\sisetup{locale=DE, per-mode=fraction}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{fontawesome5}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, decorations.pathmorphing, patterns}
+\usepackage{scrlayer-scrpage}
+\usepackage{geometry}
+\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=2.5cm, headheight=1.5cm}
+
+% ============================================
+% Kopf- und Fußzeile (KOMA-Script)
+% ============================================
+\clearpairofpagestyles
+\ihead{\includegraphics[height=1cm]{logo.jpeg}}
+\chead{\textbf{Physik-LK 11NP}}
+\ohead{\textbf{\today}}
+\cfoot{\pagemark}
+\KOMAoptions{headsepline=0.4pt}
+
+% ============================================
+% tcolorbox-Definitionen
+% ============================================
+\newtcolorbox{formelbox}[1][]{
+	colback=blue!5!white,
+	colframe=blue!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{square-root-alt} Formel},
+	#1
+}
+
+\newtcolorbox{aufgabe}[1][]{
+	colback=orange!5!white,
+	colframe=orange!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{pencil-alt} Aufgabe},
+	#1
+}
+
+\newtcolorbox{sternaufgabe}[1][]{
+	colback=red!5!white,
+	colframe=red!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{star} Sternaufgabe},
+	#1
+}
+
+\newtcolorbox{hilfebox}[1][]{
+	colback=green!5!white,
+	colframe=green!60!black,
+	fonttitle=\bfseries,
+	title={\faIcon{lightbulb} Hinweis},
+	#1
+}
+
+\newtcolorbox{infobox}[1][]{
+	colback=gray!5!white,
+	colframe=gray!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{info-circle} Information},
+	#1
+}
+
+\newtcolorbox{materialbox}[1][]{
+	colback=purple!5!white,
+	colframe=purple!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{tools} Materialien},
+	#1
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+% ============================================
+% Dokumentbeginn
+% ============================================
+\begin{document}
+	
+	% ============================================
+	% Titel
+	% ============================================
+	\begin{center}
+		{\LARGE\bfseries Experiment 4b: Erdbeschleunigung aus der Pendelschwingung}\\[0.5cm]
+		{\large Bestimmung von $g$ über die Schwingungsdauer eines Fadenpendels}
+	\end{center}
+	
+	\vspace{0.5cm}
+	
+	% ============================================
+	% Theoretischer Hintergrund
+	% ============================================
+	\section*{Theoretischer Hintergrund}
+	
+	Ein Fadenpendel schwingt bei kleinen Auslenkungen (Winkel $\varphi < 10°$) harmonisch. Die Schwingungsdauer $T$ hängt dabei nur von der \textbf{Pendellänge} $l$ und der \textbf{Erdbeschleunigung} $g$ ab -- nicht von der Masse oder der Amplitude!
+	
+	\begin{formelbox}[title={\faIcon{square-root-alt} Schwingungsdauer des Fadenpendels}]
+		\[T = 2\pi \sqrt{\frac{l}{g}}\]
+		
+		\textbf{Dabei gilt:}
+		\begin{itemize}
+			\item $T$ -- Schwingungsdauer (Zeit für eine vollständige Hin- und Herbewegung) in s
+			\item $l$ -- Pendellänge (Aufhängepunkt bis Schwerpunkt der Kugel) in m
+			\item $g$ -- Erdbeschleunigung in $\si{\metre\per\second\squared}$
+		\end{itemize}
+	\end{formelbox}
+	
+	Durch Umstellen der Formel kann die Erdbeschleunigung $g$ bestimmt werden:
+	
+	\begin{formelbox}[title={\faIcon{square-root-alt} Erdbeschleunigung aus der Schwingungsdauer}]
+		\[g = \frac{4\pi^2 \cdot l}{T^2}\]
+	\end{formelbox}
+	
+	\begin{infobox}[title={\faIcon{info-circle} Vorteile dieser Methode}]
+		\begin{itemize}
+			\item \textbf{Längere Messzeiten:} Die Schwingungsdauer beträgt etwa 1--2 Sekunden, was die Zeitmessung erleichtert.
+			\item \textbf{Mehrfachmessung:} Man misst die Zeit für $n$ Schwingungen und teilt durch $n$ → kleinerer relativer Fehler.
+			\item \textbf{Kein Reaktionszeitfehler:} Die Stoppuhr kann beim Nulldurchgang gestartet und gestoppt werden.
+		\end{itemize}
+	\end{infobox}
+	
+	% ============================================
+	% Versuchsaufbau
+	% ============================================
+	\section*{Versuchsaufbau}
+	
+	\begin{materialbox}
+		\begin{minipage}{0.48\textwidth}
+			\begin{itemize}
+				\item Stativmaterial mit Aufhängung
+				\item Pendelfaden (undehnbar)
+				\item Pendelkörper (Kugel)
+			\end{itemize}
+		\end{minipage}
+		\begin{minipage}{0.48\textwidth}
+			\begin{itemize}
+				\item Maßband oder Meterstab
+				\item Stoppuhr (oder Smartphone)
+				\item Winkelmesser (optional)
+			\end{itemize}
+		\end{minipage}
+	\end{materialbox}
+	
+	\vspace{0.3cm}
+	
+	\begin{figure}[h]
+		\centering
+		\begin{tikzpicture}[scale=1.2]
+			% Stativ (horizontaler Balken)
+			\draw[thick, fill=gray!40] (-2,5) rectangle (2,5.15);
+			
+			% Aufhängepunkt
+			\fill[black] (0,5) circle (0.08);
+			\node[above right] at (0.1,5.1) {Aufhängepunkt};
+			
+			% Ruhelage (gestrichelte Linie)
+			\draw[dashed, gray] (0,5) -- (0,0.8);
+			
+			% Ruhelage-Kugel (grau, transparent)
+			\draw[gray!50, thick] (0,0.5) circle (0.35);
+			
+			% Faden (zur ausgelenkten Position)
+			\draw[thick] (0,5) -- (1.8,1.2);
+			
+			% Ausgelenkte Kugel
+			\fill[blue!60] (1.8,1.2) circle (0.35);
+			\draw[blue!80, thick] (1.8,1.2) circle (0.35);
+			\node[right] at (2.2,1.2) {Pendelkörper};
+			
+			% Pendellänge l (roter Doppelpfeil an der gestrichelten Linie)
+			\draw[<->, thick, red!70!black] (-0.5,5) -- (-0.5,0.5);
+			\node[left, red!70!black] at (-0.5,2.75) {$l$};
+			
+			% Winkel phi
+			\draw[thick] (0,4.2) arc (270:290:0.8);
+			\node at (0.25,3.9) {$\varphi$};
+			
+			% Schwingungspfeil (blau, unter der Ruhelage)
+			\draw[<->, thick, blue!70!black] (-0.6,-0.5) -- (0.6,-0.5);
+			\node[below, blue!70!black] at (0,-0.51) {Schwingung};
+			
+			% Amplitude (grün, von Ruhelage zur ausgelenkten Position)
+			\draw[<->, thick, green!60!black] (0,0.1) -- (1.8,0.1);
+			\node[below, green!60!black] at (0.9,0) {Amplitude};
+			
+		\end{tikzpicture}
+		\caption{Fadenpendel mit Pendellänge $l$ und Auslenkwinkel $\varphi$}
+		\label{fig:pendel}
+	\end{figure}
+	
+	\begin{hilfebox}[title={\faIcon{lightbulb} Wichtige Hinweise}]
+		\begin{itemize}
+			\item Die \textbf{Pendellänge} $l$ wird vom Aufhängepunkt bis zum \textbf{Schwerpunkt} der Kugel gemessen (= Mittelpunkt bei einer homogenen Kugel).
+			\item Der \textbf{Auslenkwinkel} sollte unter $10°$ bleiben, damit die Näherung für kleine Winkel gilt.
+			\item Das Pendel soll in einer \textbf{Ebene} schwingen, nicht kreisen!
+			\item Der Faden sollte möglichst \textbf{undehnbar} und leicht sein.
+		\end{itemize}
+	\end{hilfebox}
+	
+	% ============================================
+	% Durchführung
+	% ============================================
+	\section*{Durchführung}
+	
+	Bauen Sie den Versuch gemäß Abbildung~\ref{fig:pendel} auf.
+	
+	\begin{enumerate}
+		\item Messen Sie die Pendellänge $l$ vom Aufhängepunkt bis zur Mitte der Kugel.
+		\item Lenken Sie das Pendel um einen kleinen Winkel ($\varphi < 10°$, ca. 5--10 cm bei $l \approx 1$ m) aus.
+		\item Lassen Sie das Pendel los und warten Sie, bis die Schwingung gleichmäßig ist.
+		\item Starten Sie die Stoppuhr beim Durchgang durch die Ruhelage.
+		\item Messen Sie die Zeit $t_{10}$ für \textbf{10 vollständige Schwingungen}.
+		\item Wiederholen Sie die Messung \textbf{dreimal} für jede Pendellänge.
+		\item Führen Sie die Messung für \textbf{drei verschiedene Pendellängen} durch (z.\,B. $l = 0{,}50\,\text{m}$; $0{,}75\,\text{m}$; $1{,}00\,\text{m}$).
+	\end{enumerate}
+	
+	% ============================================
+	% Aufgabenstellungen
+	% ============================================
+	\section*{Aufgabenstellungen}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 1: Messungen durchführen}]
+		Führen Sie die Messungen wie beschrieben durch und tragen Sie alle Werte in die Tabelle auf dem Protokollbogen ein.
+	\end{aufgabe}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 2: Schwingungsdauer berechnen}]
+		Berechnen Sie für jede Messung die Schwingungsdauer:
+		\[T = \frac{t_{10}}{10}\]
+		Bestimmen Sie für jede Pendellänge den Mittelwert $\bar{T}$.
+	\end{aufgabe}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 3: Erdbeschleunigung berechnen}]
+		Berechnen Sie für jede Pendellänge die Erdbeschleunigung:
+		\[g = \frac{4\pi^2 \cdot l}{\bar{T}^2}\]
+	\end{aufgabe}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 4: Grafische Auswertung}]
+		Tragen Sie $T^2$ gegen $l$ auf. Bestimmen Sie die Steigung $m$ der Ausgleichsgeraden und berechnen Sie daraus $g$:
+		\[T^2 = \frac{4\pi^2}{g} \cdot l \quad \Rightarrow \quad g = \frac{4\pi^2}{m}\]
+	\end{aufgabe}
+	
+	\begin{sternaufgabe}[title={\faIcon{star} Aufgabe 5: Methodenvergleich}]
+		Vergleichen Sie Ihr Ergebnis mit dem Wert aus Experiment 3 (Fallversuch) und dem Literaturwert $g_{\text{Lit}} = \SI{9,81}{\metre\per\second\squared}$. Welche Methode liefert das genauere Ergebnis? Begründen Sie!
+	\end{sternaufgabe}
+	
+	% ============================================
+	% Protokollbogen
+	% ============================================
+	\newpage
+	\section*{Protokollbogen -- Experiment 4b}
+	
+	\begin{center}
+		\begin{tcolorbox}[colback=white, colframe=black, width=\textwidth, boxrule=0.5pt]
+			\begin{tabular}{@{}p{0.32\textwidth}p{0.32\textwidth}p{0.32\textwidth}@{}}
+				\textbf{Name:} \hrulefill & \textbf{Klasse:} \hrulefill & \textbf{Datum:} \hrulefill \\[0.4cm]
+				\textbf{Gruppenmitglieder:} & \multicolumn{2}{l}{\hrulefill} \\
+			\end{tabular}
+		\end{tcolorbox}
+	\end{center}
+	
+	\subsection*{Messwerte}
+	
+	\textbf{Pendellänge 1:} $l_1 = $ \rule{3cm}{0.4pt} m
+	
+	\vspace{0.2cm}
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{2.2}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			\textbf{Messung} & $t_{10}$ in s & $T = t_{10}/10$ in s & \\
+			\hline
+			1 & & & \\
+			\hline
+			2 & & & \multirow{2}{*}{$\bar{T}_1 = $ \rule{2cm}{0.4pt} s} \\
+			\cline{1-3}
+			3 & & & \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\vspace{0.5cm}
+	
+	\textbf{Pendellänge 2:} $l_2 = $ \rule{3cm}{0.4pt} m
+	
+	\vspace{0.2cm}
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{2.2}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			\textbf{Messung} & $t_{10}$ in s & $T = t_{10}/10$ in s & \\
+			\hline
+			1 & & & \\
+			\hline
+			2 & & & \multirow{2}{*}{$\bar{T}_2 = $ \rule{2cm}{0.4pt} s} \\
+			\cline{1-3}
+			3 & & & \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\vspace{0.5cm}
+	
+	\textbf{Pendellänge 3:} $l_3 = $ \rule{3cm}{0.4pt} m
+	
+	\vspace{0.2cm}
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{2.2}
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			\textbf{Messung} & $t_{10}$ in s & $T = t_{10}/10$ in s & \\
+			\hline
+			1 & & & \\
+			\hline
+			2 & & & \multirow{2}{*}{$\bar{T}_3 = $ \rule{2cm}{0.4pt} s} \\
+			\cline{1-3}
+			3 & & & \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	% ============================================
+	% Protokollbogen Seite 2
+	% ============================================
+	\newpage
+	
+	\subsection*{Auswertung: Berechnung von $g$}
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{2.5}
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			& $l$ in m & $\bar{T}$ in s & $\bar{T}^2$ in s$^2$ & $g = \dfrac{4\pi^2 \cdot l}{\bar{T}^2}$ in $\dfrac{\text{m}}{\text{s}^2}$ \\
+			\hline
+			Pendellänge 1 & & & & \\
+			\hline
+			Pendellänge 2 & & & & \\
+			\hline
+			Pendellänge 3 & & & & \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\vspace{0.5cm}
+	
+	\subsection*{Diagramm: $T^2$-$l$-Diagramm}
+
+	\begin{hilfebox}[title={\faIcon{lightbulb} Neu: Skalierung selbst wählen}]
+		Ab diesem Versuch legen Sie die Achsenskalierung selbst fest:
+		\begin{itemize}
+			\item Größten Messwert bestimmen -- er muss noch auf das Gitter passen.
+			\item Runde Schrittweite pro Kästchen wählen (1, 2, 5, 10, \dots).
+			\item Zahlen an die dicken Gitterlinien schreiben -- Einheit nicht vergessen!
+		\end{itemize}
+	\end{hilfebox}
+
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=0.85]
+			% Koordinatensystem
+			\draw[->] (0,0) -- (12,0) node[right] {$l$ in m};
+			\draw[->] (0,0) -- (0,9) node[above] {$T^2$ in s$^2$};
+			
+			% Gitternetz
+			\draw[gray!30, very thin] (0,0) grid[step=0.5] (11.5,8.5);
+			\draw[gray!50, thin] (0,0) grid[step=1] (11.5,8.5);
+			
+			% Achsenbeschriftung x (0 bis 1,2 m)
+			
+			% Achsenbeschriftung y (0 bis 4,5 s²)
+		\end{tikzpicture}
+	\end{center}
+	
+	\subsection*{Steigung und Erdbeschleunigung aus dem Diagramm}
+	
+	\textbf{Steigungsdreieck:}
+	
+	\vspace{0.3cm}
+	
+	$\Delta l = l_2 - l_1 = $ \rule{2cm}{0.4pt} $-$ \rule{2cm}{0.4pt} $=$ \rule{2cm}{0.4pt} m
+	
+	\vspace{0.3cm}
+	
+	$\Delta T^2 = T_2^2 - T_1^2 = $ \rule{2cm}{0.4pt} $-$ \rule{2cm}{0.4pt} $=$ \rule{2cm}{0.4pt} s$^2$
+	
+	\vspace{0.3cm}
+	
+	\textbf{Steigung:} $m = \dfrac{\Delta T^2}{\Delta l} = $ \rule{4cm}{0.4pt} $\dfrac{\text{s}^2}{\text{m}}$
+	
+	\vspace{0.5cm}
+	
+	\textbf{Erdbeschleunigung:} $g = \dfrac{4\pi^2}{m} = $ \rule{4cm}{0.4pt} $\dfrac{\text{m}}{\text{s}^2}$
+	
+	% ============================================
+	% Protokollbogen Seite 3
+	% ============================================
+	\newpage
+	
+	\subsection*{Ergebnis}
+	
+	\begin{tcolorbox}[colback=yellow!10!white, colframe=yellow!50!black, width=\textwidth]
+		\centering
+		\textbf{Ergebnis: Erdbeschleunigung aus der Pendelschwingung}\\[0.3cm]
+		{\Large $g = \rule{3cm}{0.4pt} \pm \rule{2cm}{0.4pt}\;\si{\metre\per\second\squared}$}
+	\end{tcolorbox}
+	
+	\vspace{0.5cm}
+	
+	\subsection*{Vergleich der Methoden}
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{2.0}
+		\begin{tabular}{|l|c|c|}
+			\hline
+			\textbf{Methode} & $g$ in $\si{\metre\per\second\squared}$ & \textbf{Relative Abweichung} \\
+			\hline
+			Experiment 3 (Fallversuch) & & \% \\
+			\hline
+			Experiment 4b (Pendel) & & \% \\
+			\hline
+			Literaturwert & 9,81 & -- \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\vspace{0.3cm}
+	
+	\textbf{Relative Abweichung:} $\dfrac{|g_{\text{Mess}} - g_{\text{Lit}}|}{g_{\text{Lit}}} \cdot 100\,\%$
+	
+	\vspace{0.5cm}
+	
+	\subsection*{Fehlerquellen}
+	
+	\textbf{Systematische Fehler:}
+	
+	\vspace{2cm}
+	
+	\textbf{Zufällige Fehler:}
+	
+	\vspace{2cm}
+	
+	\subsection*{Fazit: Welche Methode ist genauer?}
+	
+	\vspace{3cm}
+	
+
+	% ============================================
+	% Abgabevermerk (Rev. 1)
+	% ============================================
+	\vspace{0.4cm}
+	\begin{tcolorbox}[colback=yellow!8, colframe=black, boxrule=0.6pt, title={\faIcon{check-circle}\enspace Abgabevermerk -- wird vor Ort ausgefüllt}, fonttitle=\bfseries]
+		Abgegeben am \rule{2.8cm}{0.4pt} \enspace um \rule{2cm}{0.4pt} Uhr \hfill Sichtvermerk Lehrkraft: \rule{3.5cm}{0.4pt}
+
+		\vspace{0.15cm}
+		{\small\textit{Dieser Protokollbogen verbleibt in Ihrer \textbf{Praktikumsmappe}. Die vollständige Mappe wird am Ende des Schuljahres vorgelegt.} \hfill \scriptsize Rev.\,1}
+	\end{tcolorbox}
+
+\end{document}

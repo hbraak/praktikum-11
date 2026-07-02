@@ -1,0 +1,444 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+% ============================================
+% Pakete
+% ============================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\sisetup{locale=DE, per-mode=fraction}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{fontawesome5}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta, positioning}
+\usepackage{scrlayer-scrpage}
+\usepackage{geometry}
+\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=2.5cm, headheight=1.5cm}
+
+% ============================================
+% Kopf- und Fußzeile (KOMA-Script)
+% ============================================
+\clearpairofpagestyles
+\ihead{\includegraphics[height=1cm]{Praktikum/logo.jpeg}}
+\chead{\textbf{Physik-LK 11NP}}
+\ohead{\textbf{19.\,Juni\,2026}}
+\cfoot{\pagemark}
+\KOMAoptions{headsepline=0.4pt}
+
+% ============================================
+% tcolorbox-Definitionen
+% ============================================
+\newtcolorbox{formelbox}[1][]{
+	colback=blue!5!white,
+	colframe=blue!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{square-root-alt} Formel},
+	#1
+}
+
+\newtcolorbox{aufgabe}[1][]{
+	colback=orange!5!white,
+	colframe=orange!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{pencil-alt} Aufgabe},
+	#1
+}
+
+\newtcolorbox{sternaufgabe}[1][]{
+	colback=red!5!white,
+	colframe=red!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{star} Sternaufgabe},
+	#1
+}
+
+\newtcolorbox{hilfebox}[1][]{
+	colback=green!5!white,
+	colframe=green!60!black,
+	fonttitle=\bfseries,
+	title={\faIcon{lightbulb} Hinweis},
+	#1
+}
+
+\newtcolorbox{infobox}[1][]{
+	colback=gray!5!white,
+	colframe=gray!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{info-circle} Information},
+	#1
+}
+
+\newtcolorbox{materialbox}[1][]{
+	colback=purple!5!white,
+	colframe=purple!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{tools} Materialien},
+	#1
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+% ============================================
+% Dokumentbeginn
+% ============================================
+\begin{document}
+
+% ============================================
+% Titel
+% ============================================
+\begin{center}
+	{\LARGE\bfseries Praktikum: Trägheitsmoment an der Drillachse}\\[0.5cm]
+	{\large Linearisierung, Geradengleichung und Fehlerabschätzung}
+\end{center}
+
+\vspace{0.5cm}
+
+% ============================================
+% Theoretischer Hintergrund
+% ============================================
+\section*{Theoretischer Hintergrund}
+
+Ein Körper mit Trägheitsmoment $J$ schwingt an einer Drillachse (Richtgröße $D_r$) mit einer bestimmten Schwingungsdauer $T$. Aus der gemessenen Schwingungsdauer kann das Trägheitsmoment berechnet werden.
+
+\begin{formelbox}[title={\faIcon{square-root-alt} Schwingungsdauer der Drillachse}]
+	\[T = 2\pi \sqrt{\frac{J}{D_r}} \qquad\Longrightarrow\qquad J = \frac{D_r \cdot T^2}{4\pi^2}\]
+
+	\textbf{Dabei gilt:}
+	\begin{itemize}
+		\item $T$ -- Schwingungsdauer (Zeit für eine vollständige Hin- und Herbewegung) in s
+		\item $J$ -- Trägheitsmoment des schwingenden Körpers in $\si{kg.m^2}$
+		\item $D_r$ -- Richtgröße (Federkonstante der Drillachse) in $\si{Nm}$
+	\end{itemize}
+\end{formelbox}
+
+Auf dem Stab sitzen \textbf{zwei gleiche Massestücke} im Abstand $r$ von der Drehachse. Das Gesamt-Trägheitsmoment setzt sich zusammen aus:
+\[
+J = \underbrace{J_0}_{\text{Halter}} + \underbrace{2\,m\,r^2}_{\text{Massestücke}}
+\]
+
+\begin{infobox}[title={\faIcon{info-circle} Linearisierung -- Die Idee}]
+	$J$ hängt \textbf{quadratisch} von $r$ ab -- wenn wir $J$ gegen $r$ auftragen, ergibt sich eine Parabel. Aber wenn wir $r^2$ als $x$-Achse wählen, wird daraus eine \textbf{Gerade}:
+	\[
+	\underbrace{J}_{y} = \underbrace{2m}_{\text{Steigung}\;k} \cdot \underbrace{r^2}_{x} + \underbrace{J_0}_{y\text{-Achsenabschnitt}}
+	\]
+	Aus der Steigung bestimmen wir die \textbf{Masse} $m$, aus dem $y$-Achsenabschnitt das \textbf{Eigenträgheitsmoment} $J_0$ des Halters.
+\end{infobox}
+
+\section*{Ziel}
+
+Sie bestimmen aus einem $J$-$r^2$-Diagramm:
+\begin{itemize}
+	\item die \textbf{Masse} $m$ der Massestücke (aus der Steigung),
+	\item das \textbf{Eigenträgheitsmoment} $J_0$ des Halters (aus dem $y$-Achsenabschnitt),
+	\item eine \textbf{Fehlerabschätzung} für Ihre Ergebnisse (Extremgeraden-Methode).
+\end{itemize}
+
+% ============================================
+% Versuchsaufbau
+% ============================================
+\section*{Versuchsaufbau}
+
+\begin{materialbox}
+	\begin{minipage}{0.48\textwidth}
+		\begin{itemize}
+			\item Drillachse mit bekannter Richtgröße $D_r$
+			\item Stab mit zwei verschiebbaren Massestücken
+			\item Lineal / Maßband
+		\end{itemize}
+	\end{minipage}
+	\begin{minipage}{0.48\textwidth}
+		\begin{itemize}
+			\item Stoppuhr (oder Smartphone)
+			\item Taschenrechner
+			\item Waage (für Vergleich am Ende)
+		\end{itemize}
+	\end{minipage}
+\end{materialbox}
+
+\begin{hilfebox}[title={\faIcon{lightbulb} Tipps zur Messung}]
+	\begin{itemize}
+		\item Messen Sie die Zeit für \textbf{10 volle Schwingungen} ($10\,T$) -- das reduziert den Reaktionszeit-Fehler erheblich!
+		\item Wiederholen Sie jede Messung \textbf{dreimal} und bilden Sie den Mittelwert.
+		\item Den Abstand $r$ messen Sie von der \textbf{Mitte des Stabs} bis zur \textbf{Mitte des Massestücks}.
+		\item Lenken Sie ca.\ $90°$ aus -- nicht zu weit, damit die Schwingung gleichmäßig bleibt.
+	\end{itemize}
+\end{hilfebox}
+
+% ============================================
+% Durchführung
+% ============================================
+\section*{Durchführung}
+
+\begin{enumerate}
+	\item Lesen Sie die Richtgröße $D_r$ der Drillachse ab (Aufkleber oder gegeben).
+	\item Stellen Sie die Massestücke symmetrisch auf den Abstand $r$ ein.
+	\item Lenken Sie die Drillachse um ca.\ $90°$ aus und lassen Sie los.
+	\item Messen Sie die Zeit für 10 volle Schwingungen. Wiederholen Sie dreimal.
+	\item Wiederholen Sie für mindestens \textbf{5 verschiedene Abstände} $r$ (z.\,B.\ 4, 8, 12, 16, 20\,cm).
+\end{enumerate}
+
+% ============================================
+% Aufgabenstellungen
+% ============================================
+\section*{Aufgabenstellungen}
+
+\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 1: Messungen durchführen}]
+	Führen Sie die Messungen durch und tragen Sie alle Werte in den Protokollbogen ein.
+\end{aufgabe}
+
+\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 2: Auswertungstabelle}]
+	Berechnen Sie für jeden Abstand $r^2$ und $J = \dfrac{D_r \cdot T^2}{4\pi^2}$. Tragen Sie die Werte in die Auswertungstabelle ein.
+\end{aufgabe}
+
+\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 3: $J$-$r^2$-Diagramm}]
+	Zeichnen Sie das $J$-$r^2$-Diagramm auf \textbf{Millimeterpapier} -- Achsen, Beschriftung und Skalierung wählen Sie selbst (Checkliste im Protokollbogen). Zeichnen Sie die \textbf{Ausgleichsgerade} (Best-Fit-Gerade): ungefähr gleich viele Punkte über und unter der Geraden. \textbf{Verlängern Sie die Gerade bis zur $y$-Achse!}
+\end{aufgabe}
+
+\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 4: Steigung und $y$-Achsenabschnitt}]
+	Bestimmen Sie mit einem \textbf{Steigungsdreieck} (zwei Punkte \textbf{auf der Geraden}, möglichst weit auseinander):
+	\begin{itemize}
+		\item die Steigung $k = \Delta J / \Delta r^2$
+		\item daraus die Masse: $m = k/2$
+		\item den $y$-Achsenabschnitt $J_0$
+	\end{itemize}
+	Vergleichen Sie $m$ mit dem Wert der Waage.
+\end{aufgabe}
+
+\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 5: Fehlerabschätzung}]
+	\begin{enumerate}
+		\item Berechnen Sie den relativen Fehler der Zeitmessung für Ihren kleinsten und größten Abstand.
+		\item Zeichnen Sie Fehlerbalken ($\pm\Delta J$) mindestens am kleinsten und größten Messpunkt.
+		\item Zeichnen Sie eine \textbf{steilste} und eine \textbf{flachste} Gerade durch die Fehlerbalken.
+		\item Bestimmen Sie den Fehler der Masse: $\Delta m = (k_\text{max} - k_\text{min}) / 4$.
+	\end{enumerate}
+\end{aufgabe}
+
+\begin{sternaufgabe}[title={\faIcon{star} Aufgabe 6: Reflexion}]
+	\begin{enumerate}
+		\item Bei welchem Abstand $r$ ist die Zeitmessung relativ am ungenauesten? Warum?
+		\item Warum verdoppelt sich der relative Fehler beim Übergang von $T$ zu $J$? (Hinweis: $J \sim T^2$)
+		\item Ist der pauschale Satz ``Die Messgeräte waren ungenau'' eine gute Fehleranalyse? Begründen Sie und formulieren Sie eine bessere.
+	\end{enumerate}
+\end{sternaufgabe}
+
+% ============================================
+% Protokollbogen
+% ============================================
+\newpage
+\section*{Protokollbogen -- Drillachse}
+
+\begin{center}
+	\begin{tcolorbox}[colback=white, colframe=black, width=\textwidth, boxrule=0.5pt]
+		\begin{tabular}{@{}p{0.32\textwidth}p{0.32\textwidth}p{0.32\textwidth}@{}}
+			\textbf{Name:} \hrulefill & \textbf{Klasse:} \hrulefill & \textbf{Datum:} \hrulefill \\[0.4cm]
+			\textbf{Gruppenmitglieder:} & \multicolumn{2}{l}{\hrulefill} \\
+		\end{tabular}
+	\end{tcolorbox}
+\end{center}
+
+\textbf{Richtgröße der Drillachse:} $D_r = $ \rule{3cm}{0.4pt} Nm
+
+\subsection*{Messwerte}
+
+\begin{center}
+	\renewcommand{\arraystretch}{2.0}
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		$r$ / cm & $10\,T_1$ / s & $10\,T_2$ / s & $10\,T_3$ / s & $\overline{10\,T}$ / s & $\overline{T}$ / s \\
+		\hline
+		& & & & & \\
+		\hline
+		& & & & & \\
+		\hline
+		& & & & & \\
+		\hline
+		& & & & & \\
+		\hline
+		& & & & & \\
+		\hline
+		& & & & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{hilfebox}[title={\faIcon{lightbulb} Warum 10 Schwingungen messen?}]
+	Die Stoppuhr hat eine Ungenauigkeit von ca.\ $\pm\SI{0,2}{s}$ (Reaktionszeit). Bei einer einzelnen Schwingung von z.\,B.\ \SI{3}{s} ist das ein Fehler von $\frac{0{,}2}{3} \approx 7\,\%$. Bei 10 Schwingungen (\SI{30}{s}) nur noch $\frac{0{,}2}{30} \approx 0{,}7\,\%$!
+\end{hilfebox}
+
+\subsection*{Auswertungstabelle}
+
+\begin{center}
+	\renewcommand{\arraystretch}{2.2}
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		$r$ / cm & $r^2$ / ($10^{-3}\,$m$^2$) & $\overline{T}$ / s & $J = \dfrac{D_r \cdot T^2}{4\pi^2}$ / ($10^{-3}\,$kg$\cdot$m$^2$) \\
+		\hline
+		& & & \\
+		\hline
+		& & & \\
+		\hline
+		& & & \\
+		\hline
+		& & & \\
+		\hline
+		& & & \\
+		\hline
+		& & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{hilfebox}[title={\faIcon{lightbulb} Rechenbeispiel}]
+	Für $r = \SI{10}{cm}$ und $T = \SI{3,08}{s}$ mit $D_r = \SI{0,028}{Nm}$:
+	\[
+	r^2 = (0{,}10\;\text{m})^2 = 10{,}0 \cdot 10^{-3}\;\text{m}^2
+	\]
+	\[
+	J = \frac{0{,}028 \cdot 3{,}08^2}{4\pi^2} = \frac{0{,}028 \cdot 9{,}486}{39{,}48} = 6{,}73 \cdot 10^{-3}\;\text{kg}\cdot\text{m}^2
+	\]
+\end{hilfebox}
+
+% ============================================
+% Diagramm
+% ============================================
+\newpage
+\subsection*{Diagramm: $J$-$r^2$-Diagramm}
+
+\begin{tcolorbox}[colback=blue!4, colframe=black, boxrule=0.6pt, title={\faIcon{ruler-combined}\enspace $J$-$r^2$-Diagramm auf Millimeterpapier}, fonttitle=\bfseries]
+	Zeichnen Sie das Diagramm auf \textbf{Millimeterpapier} und heften Sie es fest an diesen Protokollbogen.
+
+	\textbf{Checkliste -- vollständiges Diagramm:}
+	\begin{itemize}
+		\item Achsen beschriftet: $r^2$ und $J$ jeweils \textbf{mit Einheit}
+		\item Skalierung selbst gewählt (runde Schritte, Messbereich gut ausgenutzt)
+		\item alle Messpunkte eingetragen
+		\item Fehlerbalken ($\pm\Delta J$) mindestens am kleinsten und größten $r$
+		\item Ausgleichsgerade bis zur $y$-Achse verlängert
+		\item steilste und flachste Gerade (Extremgeraden) eingezeichnet
+	\end{itemize}
+\end{tcolorbox}
+
+% ============================================
+% Auswertung
+% ============================================
+\subsection*{Auswertung aus dem Diagramm}
+
+\textbf{Steigungsdreieck} (zwei Punkte \textbf{auf der Geraden}, möglichst weit auseinander):
+
+\vspace{0.3cm}
+Punkt 1: $r^2_1 = $ \rule{2cm}{0.4pt}, \quad $J_1 = $ \rule{2cm}{0.4pt}
+
+\vspace{0.3cm}
+Punkt 2: $r^2_2 = $ \rule{2cm}{0.4pt}, \quad $J_2 = $ \rule{2cm}{0.4pt}
+
+\vspace{0.3cm}
+\textbf{Steigung:} $k = \dfrac{\Delta J}{\Delta r^2} = \dfrac{J_2 - J_1}{r^2_2 - r^2_1} = $ \rule{4cm}{0.4pt} kg
+
+\vspace{0.5cm}
+\textbf{Masse eines Massestücks:} $m = \dfrac{k}{2} = $ \rule{4cm}{0.4pt} kg
+
+\vspace{0.5cm}
+\textbf{$y$-Achsenabschnitt:} $J_0 = $ \rule{4cm}{0.4pt} $\cdot 10^{-3}$ kg$\cdot$m$^2$
+
+\vspace{0.5cm}
+\textbf{Vergleich:} $m_\text{Waage} = $ \rule{2cm}{0.4pt} kg \qquad Abweichung: $\dfrac{|m_\text{Diagramm} - m_\text{Waage}|}{m_\text{Waage}} \cdot 100\,\% = $ \rule{2cm}{0.4pt} \%
+
+% ============================================
+% Fehlerabschätzung
+% ============================================
+\newpage
+\section*{Fehlerabschätzung}
+
+\begin{infobox}[title={\faIcon{info-circle} Größtfehler-Methode (ohne Differenzialrechnung)}]
+	Wenn eine Größe aus einer Formel berechnet wird, kann man den \textbf{größtmöglichen Fehler} abschätzen: Man setzt die ungünstigsten Werte der Messgrößen ein und schaut, wie stark sich das Ergebnis ändert.
+
+	Faustregel: Da $J \sim T^2$ gilt, verdoppelt sich der relative Fehler:
+	\[\frac{\Delta J}{J} \approx 2 \cdot \frac{\Delta T}{T}\]
+\end{infobox}
+
+\subsection*{Relativer Fehler der Zeitmessung}
+
+Ungenauigkeit der Stoppuhr: $\Delta(10T) \approx \pm\SI{0,3}{s}$ (Reaktionszeit Start + Stopp)
+
+\begin{center}
+	\renewcommand{\arraystretch}{2.2}
+	\begin{tabular}{|l|c|c|}
+		\hline
+		& \textbf{kleinstes $r$} & \textbf{größtes $r$} \\
+		\hline
+		$10\,T$ / s & & \\
+		\hline
+		$\Delta T / T = \Delta(10T) / (10T)$ & \rule{2cm}{0.4pt} \% & \rule{2cm}{0.4pt} \% \\
+		\hline
+		$\Delta J / J \approx 2 \cdot \Delta T / T$ & \rule{2cm}{0.4pt} \% & \rule{2cm}{0.4pt} \% \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Bei welchem Abstand ist die Messung relativ am ungenauesten? \rule{8cm}{0.4pt}
+
+Warum? \rule{10cm}{0.4pt}
+
+\subsection*{Extremgeraden-Methode}
+
+\begin{enumerate}
+	\item Zeichnen Sie an jeden Messpunkt einen \textbf{vertikalen Fehlerbalken} ($\pm\Delta J$, nutzen Sie $\Delta J / J \approx 3\,\%$).
+	\item Zeichnen Sie im Diagramm zusätzlich:
+	\begin{itemize}
+		\item \textcolor{red}{\textbf{rote Gerade}}: \textbf{steilste} Gerade, die noch durch alle Fehlerbalken passt
+		\item \textcolor{blue}{\textbf{blaue Gerade}}: \textbf{flachste} Gerade, die noch durch alle Fehlerbalken passt
+	\end{itemize}
+	\item Bestimmen Sie die Steigungen:
+\end{enumerate}
+
+\vspace{0.3cm}
+$k_\text{max} = $ \rule{3cm}{0.4pt} kg \qquad $k_\text{min} = $ \rule{3cm}{0.4pt} kg
+
+\vspace{0.3cm}
+\textbf{Fehler der Steigung:} $\Delta k = \dfrac{k_\text{max} - k_\text{min}}{2} = $ \rule{3cm}{0.4pt} kg
+
+\vspace{0.5cm}
+\begin{tcolorbox}[colback=yellow!10!white, colframe=yellow!50!black, width=\textwidth]
+	\centering
+	\textbf{Ergebnis mit Fehlerangabe}\\[0.3cm]
+	{\Large $m = \rule{2cm}{0.4pt} \pm \rule{2cm}{0.4pt}\;\text{kg}$}\\[0.3cm]
+	{\Large $J_0 = \rule{2cm}{0.4pt} \pm \rule{2cm}{0.4pt}\;\text{kg}\cdot\text{m}^2$}
+\end{tcolorbox}
+
+\subsection*{Reflexion}
+
+\textbf{Systematische Fehler} (verfälschen das Ergebnis immer in die gleiche Richtung):
+
+\vspace{2cm}
+
+\textbf{Zufällige Fehler} (streuen um den wahren Wert):
+
+\vspace{2cm}
+
+\textbf{Fazit:} Ist der Satz ``Die Messgeräte waren ungenau'' eine gute Fehleranalyse? Formulieren Sie eine bessere, \textbf{konkrete} Aussage zu Ihrem Experiment:
+
+\vspace{2.5cm}
+
+
+	% ============================================
+	% Abgabevermerk (Rev. 1)
+	% ============================================
+	\vspace{0.4cm}
+	\begin{tcolorbox}[colback=yellow!8, colframe=black, boxrule=0.6pt, title={\faIcon{check-circle}\enspace Abgabevermerk -- wird vor Ort ausgefüllt}, fonttitle=\bfseries]
+		Abgegeben am \rule{2.8cm}{0.4pt} \enspace um \rule{2cm}{0.4pt} Uhr \hfill Sichtvermerk Lehrkraft: \rule{3.5cm}{0.4pt}
+
+		\vspace{0.15cm}
+		{\small\textit{Dieser Protokollbogen verbleibt in Ihrer \textbf{Praktikumsmappe}. Die vollständige Mappe wird am Ende des Schuljahres vorgelegt.} \hfill \scriptsize Rev.\,1}
+	\end{tcolorbox}
+
+\end{document}

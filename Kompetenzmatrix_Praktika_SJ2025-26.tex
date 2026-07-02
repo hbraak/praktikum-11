@@ -1,0 +1,92 @@
+\documentclass[a4paper,11pt,landscape]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{scrlayer-scrpage}
+\usepackage{enumitem}
+\sisetup{locale=DE, output-decimal-marker={,}}
+\geometry{a4paper, landscape, left=1.5cm, right=1.5cm, top=2.6cm, bottom=1.8cm}
+
+\ihead{\includegraphics[height=1cm]{logo.jpeg}}
+\chead{\textbf{Physik-Praktikum 11NP -- Kompetenzmatrix}}
+\ohead{Schuljahr 2025/26}
+\setkomafont{pageheadfoot}{\normalfont}
+\KOMAoptions{headsepline}
+
+\newcommand{\voll}{\Large$\bullet$}   % Schwerpunkt
+\newcommand{\teil}{\Large$\circ$}     % enthalten / angebahnt
+\newcolumntype{C}{>{\centering\arraybackslash}p{1.55cm}}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+\begin{document}
+
+\noindent\small\textbf{Praktikumsversuche im 11.\ Schuljahr} \quad|\quad Grundlage: schulinterner Lehrplan Physiktechnik / KLP NRW \quad|\quad
+Legende: $\bullet$ = Schwerpunkt \quad $\circ$ = enthalten/angebahnt
+
+\vspace{4pt}
+
+\begin{footnotesize}
+\begin{tabularx}{\textwidth}{@{}p{0.7cm}p{3.4cm}L|CCC|CCCC|C@{}}
+\toprule
+& & & \multicolumn{3}{c|}{\textbf{Fachkompetenz (UF)}} & \multicolumn{4}{c|}{\textbf{Erkenntnisgewinnung (E)}} & \textbf{K} \\
+\textbf{HJ} & \textbf{Versuch} & \textbf{Fachlicher Inhalt} &
+\rotatebox{60}{\parbox{3cm}{Größen \& Einheiten anwenden}} &
+\rotatebox{60}{\parbox{3cm}{Formeln anwenden/umstellen}} &
+\rotatebox{60}{\parbox{3cm}{Herleitung/Modell nachvollziehen}} &
+\rotatebox{60}{\parbox{3cm}{Aufbau \& Durchführung}} &
+\rotatebox{60}{\parbox{3cm}{Messreihen aufnehmen}} &
+\rotatebox{60}{\parbox{3cm}{Diagramme erstellen/auswerten}} &
+\rotatebox{60}{\parbox{3cm}{Fehler betrachten, Literaturwert-Vergleich}} &
+\rotatebox{60}{\parbox{3cm}{Protokoll führen}} \\
+\midrule
+11.1 & E1: Konstante Geschwindigkeit & Gleichförmige Bewegung, $v = s/t$; Registrierstreifen; $t$-$s$-Diagramm; Intervallgeschwindigkeit & \voll & \teil & & \voll & \voll & \voll & \teil & \voll \\
+\addlinespace
+11.1 & E2: Konstante Beschleunigung & Gleichmäßig beschleunigte Bewegung, $s = \tfrac{1}{2}at^2$; Fahrbahn; $t$-$s$-/$t$-$v$-Diagramm & \voll & \voll & \teil & \voll & \voll & \voll & \teil & \voll \\
+\addlinespace
+11.1 & E3: Erdbeschleunigung (freier Fall) & Freier Fall, Bestimmung von $g$; Fallzeitmessung; Vergleich mit Literaturwert & \teil & \voll & \teil & \voll & \voll & \teil & \voll & \voll \\
+\addlinespace
+11.1 & E4: Fadenpendel & Schwingungsdauer $T$; Massenvergleich (Holz-/Eisenkugel); Herleitung $T$-Gleichung & \teil & \voll & \voll & \voll & \voll & \teil & \voll & \voll \\
+\addlinespace
+11.1 & E4b: Pendel $\to$ Erdbeschleunigung (+ Herleitungs-Handout) & $T = 2\pi\sqrt{l/g}$; \textbf{Linearisierung} über $T^2$-$l$-Diagramm; $g$ aus Steigung & \teil & \voll & \voll & \teil & \voll & \voll & \voll & \voll \\
+\addlinespace
+11.1 & E5: Wärme (Dewar-Gefäß) & Spezifische Wärmekapazität; $Q = mc\Delta T$; konstante vs.\ variable Wassermasse & \voll & \voll & \teil & \voll & \voll & \teil & \voll & \voll \\
+\addlinespace
+11.1 & E6: Elektrolyseur (+ schlanke Version) & Elektrische Arbeit/Energie; Gasvolumen; $t$-$V$-Diagramm; \textbf{Wirkungsgrad} $\eta$ bewerten & \voll & \voll & & \voll & \voll & \voll & \voll & \voll \\
+\addlinespace
+\midrule
+11.2 & Federpendel & Hookesches Gesetz; Federkonstante $D$ statisch \& dynamisch ($T = 2\pi\sqrt{m/D}$); Methodenvergleich & \teil & \voll & \voll & \voll & \voll & \teil & \voll & \voll \\
+\addlinespace
+11.2 & Drillachse (+ Auswertungsblatt) & Trägheitsmoment $J$; Drehschwingung; Massenverteilung; Satz von Steiner; Auswertungstabelle & \teil & \voll & \voll & \voll & \voll & \voll & \voll & \voll \\
+\bottomrule
+\end{tabularx}
+\end{footnotesize}
+
+\vspace{10pt}
+
+\begin{minipage}[t]{0.48\textwidth}
+\subsection*{Kompetenzentwicklung im Jahresverlauf}
+\begin{itemize}[leftmargin=1.5em, itemsep=1pt]\small
+\item \textbf{E1--E2:} Grundfertigkeiten -- messen, tabellieren, erste Diagramme von Hand.
+\item \textbf{E3--E4b:} Zunehmende Mathematisierung -- Formeln umstellen, herleiten, \emph{linearisieren} ($T^2$-$l$ als Schlüsselstelle).
+\item \textbf{E5--E6:} Energetische Betrachtung und \emph{Bewertung} (Wärmeverluste, Wirkungsgrad).
+\item \textbf{11.2:} Transfer der Methoden auf Schwingungen und Rotation (Federpendel, Drillachse) -- Methodenvergleich und Fehlerdiskussion als Schwerpunkt.
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\subsection*{Durchgängige Elemente aller Anleitungen}
+\begin{itemize}[leftmargin=1.5em, itemsep=1pt]\small
+\item Einheitlicher Aufbau: Theorie $\to$ Aufbau $\to$ Durchführung $\to$ Aufgaben $\to$ \textbf{Protokollbogen}
+\item Protokollbogen mit Messwerttabellen und vorgezeichneten Diagrammachsen (Scaffolding)
+\item Formel-, Aufgaben-, Hilfe- und Infoboxen (farbkodiert) zur Selbststeuerung
+\item Zusatzaufgaben ($\bigstar$) zur Differenzierung
+\end{itemize}
+\end{minipage}
+
+\end{document}

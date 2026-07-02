@@ -1,0 +1,344 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+% ============================================
+% Pakete
+% ============================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\sisetup{locale=DE, per-mode=fraction}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{fontawesome5}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, decorations.pathmorphing, patterns}
+\usepackage{scrlayer-scrpage}
+\usepackage{geometry}
+\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=2.5cm, headheight=1.5cm}
+
+% ============================================
+% Kopf- und Fußzeile (KOMA-Script)
+% ============================================
+\clearpairofpagestyles
+\ihead{\includegraphics[height=1cm]{logo.jpeg}}
+\chead{\textbf{Physik-LK 11NP}}
+\ohead{\textbf{\today}}
+\cfoot{\pagemark}
+\KOMAoptions{headsepline=0.4pt}
+
+% ============================================
+% tcolorbox-Definitionen
+% ============================================
+\newtcolorbox{formelbox}[1][]{
+	colback=blue!5!white,
+	colframe=blue!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{square-root-alt} Formel},
+	#1
+}
+
+\newtcolorbox{aufgabe}[1][]{
+	colback=orange!5!white,
+	colframe=orange!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{pencil-alt} Aufgabe},
+	#1
+}
+
+\newtcolorbox{sternaufgabe}[1][]{
+	colback=red!5!white,
+	colframe=red!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{star} Sternaufgabe},
+	#1
+}
+
+\newtcolorbox{hilfebox}[1][]{
+	colback=green!5!white,
+	colframe=green!60!black,
+	fonttitle=\bfseries,
+	title={\faIcon{lightbulb} Hinweis},
+	#1
+}
+
+\newtcolorbox{infobox}[1][]{
+	colback=gray!5!white,
+	colframe=gray!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{info-circle} Information},
+	#1
+}
+
+\newtcolorbox{materialbox}[1][]{
+	colback=purple!5!white,
+	colframe=purple!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{tools} Materialien},
+	#1
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+% ============================================
+% Dokumentbeginn
+% ============================================
+\begin{document}
+	
+	% ============================================
+	% Titel
+	% ============================================
+	\begin{center}
+		{\LARGE\bfseries Praktikum: Energieumwandlung am Pendel}\\[0.5cm]
+		{\large Überprüfung des Energieerhaltungssatzes}
+	\end{center}
+	
+	\vspace{0.5cm}
+	
+	% ============================================
+	% Theoretischer Hintergrund
+	% ============================================
+	\section*{Theoretischer Hintergrund}
+	
+	Eine schwere Kugel hängt an einem sehr langen Faden und wird ausgelenkt. Da sie dabei etwas angehoben wird, erhält sie \textbf{Lageenergie} (potentielle Energie). Diese wandelt sich beim Schwingen -- wie bei einer Schaukel -- in \textbf{Bewegungsenergie} (kinetische Energie) und dann wieder in Lageenergie um. Bleiben die Geschwindigkeit und der Luftwiderstand gering, so erfolgt eine fast verlustfreie Umwandlung der Energien.
+	
+	\vspace{0.5cm}
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=1.5]
+			% Aufhängung
+			\fill[pattern=north east lines] (-1.5,4) rectangle (1.5,4.3);
+			\draw[thick] (-1.5,4) -- (1.5,4);
+			
+			% Ruhelage (gestrichelt)
+			\draw[dashed, gray] (0,4) -- (0,0);
+			
+			% Ausgelenkte Position
+			\draw[thick] (0,4) -- (2.5,1.5);
+			\fill[red!70!black] (2.5,1.5) circle (0.4);
+			
+			% Tiefster Punkt (transparent)
+			\draw[thick, dashed, gray] (0,4) -- (0,0.4);
+			\draw[gray, dashed] (0,0.4) circle (0.4);
+			
+			% Höhe h
+			\draw[<->, thick] (3.2,0.4) -- (3.2,1.5);
+			\node[right] at (3.2,0.95) {$h$};
+			
+			% Horizontale Hilfslinien
+			\draw[dotted] (0,0.4) -- (3.2,0.4);
+			\draw[dotted] (2.5,1.5) -- (3.2,1.5);
+			
+			% Kugeldurchmesser (horizontal durch Kugelmitte)
+			\draw[<->, thick] (2.1,1.5) -- (2.9,1.5);
+			\node[below] at (2.5,1.0) {$d_K$};
+			
+			% Lichtschranke
+			\draw[thick, fill=yellow!50] (-0.6,-0.2) rectangle (-0.4,1);
+			\draw[thick, fill=yellow!50] (0.4,-0.2) rectangle (0.6,1);
+			\draw[red, thick, ->] (-0.4,0.4) -- (0.4,0.4);
+			\node[below] at (0,-0.4) {\small Lichtschranke};
+			
+			% Energiebeschriftung
+			\node[right, red!70!black] at (3.3,1.5) {$E_{\text{pot}} = m \cdot g \cdot h$};
+			\node[right, blue!70!black] at (1,-0.8) {$E_{\text{kin}} = \frac{1}{2} m \cdot v^2$};
+			
+		\end{tikzpicture}
+	\end{center}
+	
+	\vspace{0.3cm}
+	
+	Die Lageenergie wird im tiefsten Punkt fast vollständig in Bewegungsenergie umgewandelt. Mit Hilfe der Energiebilanz kann man die \textbf{Dunkelzeit} berechnen, während der die im tiefsten Punkt angebrachte Lichtschranke vom Kugeldurchmesser abgedunkelt wird.
+	
+	\begin{formelbox}[title={\faIcon{square-root-alt} Herleitung der Dunkelzeit}]
+		\textbf{Energieerhaltung:} \quad $E_{\text{pot}} = E_{\text{kin}}$
+		
+		\vspace{0.2cm}
+		\[m \cdot g \cdot h = \frac{1}{2} m \cdot v^2 \quad \Rightarrow \quad v = \sqrt{2 \cdot g \cdot h}\]
+		
+		\vspace{0.3cm}
+		\textbf{Dunkelzeit:} Die Kugel durchquert die Lichtschranke mit der Geschwindigkeit $v$ und legt dabei den Weg $d_K$ (Kugeldurchmesser) zurück:
+		
+		\vspace{0.2cm}
+		\[t_D = \frac{d_K}{v} = \frac{d_K}{\sqrt{2 \cdot g \cdot h}}\qquad\textbf{(Gleichung 1)}\] 
+	\end{formelbox}
+	
+	%	\begin{hilfebox}
+		%		Die Masse $m$ kürzt sich bei der Energiebilanz heraus! Die Dunkelzeit ist daher \textbf{unabhängig von der Kugelmasse} -- nur der Kugeldurchmesser und die Auslenkhöhe bestimmen das Ergebnis.
+		%	\end{hilfebox}
+	
+	% ============================================
+	% Versuchsaufbau
+	% ============================================
+	\section*{Versuchsaufbau und Durchführung}
+	
+	\begin{materialbox}
+		\begin{itemize}
+			\item Holzkugel (rot, $d_K = \SI{7}{cm}$)
+			\item Eisenkugel (etwas geringerer Durchmesser)
+			\item Faden (möglichst lang)
+			\item Lichtschranke mit Zählgerät
+			\item Stativmaterial
+			\item Messschieber / Lineal
+		\end{itemize}
+	\end{materialbox}
+	
+	\begin{hilfebox}[title={\faIcon{lightbulb} Durchführung}]
+		\begin{enumerate}
+			\item Hängen Sie die Holzkugel an einem Faden auf.
+			\item Ordnen Sie die Lichtschranke im tiefsten Punkt so an, dass der \textbf{volle Kugeldurchmesser} die Lichtschranke unterbricht.
+			\item Schalten Sie das Zählgerät so, dass die \textbf{Dunkelzeit} registriert wird (Brücke oben).
+			\item Messen Sie für verschiedene Auslenkhöhen $h$ die Dunkelzeit $t_D$.
+			\item Wiederholen Sie eine Messung mit der Eisenkugel.
+		\end{enumerate}
+	\end{hilfebox}
+	
+	% ============================================
+	% Aufgabenstellungen
+	% ============================================
+	\section*{Aufgabenstellungen}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 1: Herleitung}]
+		Leiten Sie die angegebene Gleichung (1) für die Dunkelzeit $t_D$ her.
+	\end{aufgabe}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 2: Interpretation}]
+		Erläutern Sie, warum die Kugelmasse in der Gleichung nicht vorkommt.
+	\end{aufgabe}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 3: Beispielrechnung}]
+		Berechnen Sie die theoretische Dunkelzeit für eine Höhe von $h = \SI{10}{cm}$ und einen Kugeldurchmesser von $d_K = \SI{7}{cm}$.
+	\end{aufgabe}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 4: Experimentelle Überprüfung}]
+		Überprüfen Sie den berechneten Wert experimentell.
+	\end{aufgabe}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 5: Messreihe}]
+		Bestimmen Sie experimentell die Dunkelzeit für mindestens \textbf{5 unterschiedliche Auslenkhöhen}. Tragen Sie die gemessenen und die theoretischen Werte in den Protokollbogen ein.
+	\end{aufgabe}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 6: Massenunabhängigkeit}]
+		Wiederholen Sie eine Messung mit der Eisenkugel und vergleichen Sie das Ergebnis mit der Holzkugel bei gleicher Auslenkhöhe.
+	\end{aufgabe}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 7: Fehleranalyse}]
+		Berechnen Sie zu jeder Messung den \textbf{relativen Fehler}, bezogen auf den theoretischen Wert:
+		\begin{equation*}
+			\text{Relativer Fehler} = \frac{|t_{D,\text{Mess}} - t_{D,\text{Theo}}|}{t_{D,\text{Theo}}} \cdot 100\%
+		\end{equation*}
+	\end{aufgabe}
+	
+	\begin{sternaufgabe}[title={\faIcon{star} Aufgabe 8: Zusammenfassung}]
+		Fassen Sie Ihr Ergebnis fachgerecht zusammen. Diskutieren Sie dabei:
+		\begin{itemize}
+			\item Stimmen Theorie und Experiment überein?
+			\item Welche systematischen Fehlerquellen gibt es?
+			\item Wird der Energieerhaltungssatz bestätigt?
+		\end{itemize}
+	\end{sternaufgabe}
+	
+	% ============================================
+	% Protokollbogen (Anhang)
+	% ============================================
+	\newpage
+	\section*{Protokollbogen -- Experiment 4}
+	
+	\begin{center}
+		\begin{tcolorbox}[colback=white, colframe=black, width=\textwidth, boxrule=0.5pt]
+			\begin{tabular}{@{}p{0.32\textwidth}p{0.32\textwidth}p{0.32\textwidth}@{}}
+				\textbf{Name:} \hrulefill & \textbf{Klasse:} \hrulefill & \textbf{Datum:} \hrulefill \\[0.4cm]
+				\textbf{Gruppenmitglieder:} & \multicolumn{2}{l}{\hrulefill} \\
+			\end{tabular}
+		\end{tcolorbox}
+	\end{center}
+	
+	\textbf{Kugeldurchmesser:} \quad Holzkugel: $d_K = $ \rule{2cm}{0.4pt} cm \hfill Eisenkugel: $d_K = $ \rule{2cm}{0.4pt} cm
+	
+	\vspace{0.3cm}
+	
+	\subsection*{1. Messwerte -- Holzkugel}
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{2.5}
+		\begin{tabular}{|p{4cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+			\hline
+			\textbf{Messung Nr.} & \centering\textbf{1} & \centering\textbf{2} & \centering\textbf{3} & \centering\textbf{4} & \centering\textbf{5} & \centering\arraybackslash\textbf{6} \\
+			\hline
+			Auslenkhöhe $h$ in cm & & & & & & \\
+			\hline
+			$t_{D,\text{Mess}}$ in ms & & & & & & \\
+			\hline
+			$t_{D,\text{Theo}}$ in ms & & & & & & \\
+			\hline
+			Rel. Fehler in \% & & & & & & \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\vspace{0.5cm}
+	
+	\subsection*{2. Vergleichsmessung -- Eisenkugel}
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{2.5}
+		\begin{tabular}{|p{5cm}|p{4cm}|p{4cm}|}
+			\hline
+			& \centering\textbf{Holzkugel} & \centering\arraybackslash\textbf{Eisenkugel} \\
+			\hline
+			Auslenkhöhe $h$ in cm & & \\
+			\hline
+			Kugeldurchmesser $d_K$ in cm & & \\
+			\hline
+			$t_{D,\text{Mess}}$ in ms & & \\
+			\hline
+			$t_{D,\text{Theo}}$ in ms & & \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\vspace{0.5cm}
+	
+	
+	
+	% ============================================
+	% Protokollbogen Seite 2
+	% ============================================
+	%\newpage
+	
+	\subsection*{3. Beispielrechnung (Aufgabe 3)}
+	\begin{infobox}[title={\faIcon{info-circle} Berechnung der theoretischen Dunkelzeit}]
+		\textbf{Formel:} \quad $\displaystyle t_{D,\text{Theo}} = \frac{d_K}{\sqrt{2 \cdot g \cdot h}}$ \quad mit $g = \SI{9,81}{\metre\per\second\squared}$
+		
+		\vspace{0.2cm}
+		\textit{Achten Sie auf konsistente Einheiten: Höhe und Durchmesser in Meter umrechnen!}
+		
+		\vspace{0.2cm}
+		\textbf{Relativer Fehler:} \quad $\displaystyle \frac{|t_{D,\text{Mess}} - t_{D,\text{Theo}}|}{t_{D,\text{Theo}}} \cdot 100\%$
+	\end{infobox}
+	\vspace{5cm}
+	\subsection*{4. Herleitung der Gleichung (Aufgabe 1)}
+	
+	\vspace{6cm}
+	
+	\subsection*{5. Ergebnis und Zusammenfassung}
+	
+	\vspace{7cm}
+	
+
+	% ============================================
+	% Abgabevermerk (Rev. 1)
+	% ============================================
+	\vspace{0.4cm}
+	\begin{tcolorbox}[colback=yellow!8, colframe=black, boxrule=0.6pt, title={\faIcon{check-circle}\enspace Abgabevermerk -- wird vor Ort ausgefüllt}, fonttitle=\bfseries]
+		Abgegeben am \rule{2.8cm}{0.4pt} \enspace um \rule{2cm}{0.4pt} Uhr \hfill Sichtvermerk Lehrkraft: \rule{3.5cm}{0.4pt}
+
+		\vspace{0.15cm}
+		{\small\textit{Dieser Protokollbogen verbleibt in Ihrer \textbf{Praktikumsmappe}. Die vollständige Mappe wird am Ende des Schuljahres vorgelegt.} \hfill \scriptsize Rev.\,1}
+	\end{tcolorbox}
+
+\end{document}

@@ -1,0 +1,449 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+% ============================================
+% Pakete
+% ============================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\sisetup{locale=DE, per-mode=fraction}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{fontawesome5}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, decorations.pathmorphing, patterns}
+\usepackage{scrlayer-scrpage}
+\usepackage{geometry}
+\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=2.5cm, headheight=1.5cm}
+
+% ============================================
+% Kopf- und Fußzeile (KOMA-Script)
+% ============================================
+\clearpairofpagestyles
+\ihead{\includegraphics[height=1cm]{logo.jpeg}}
+\chead{\textbf{Physik-LK 11NP}}
+\ohead{\textbf{\today}}
+\cfoot{\pagemark}
+\KOMAoptions{headsepline=0.4pt}
+
+% ============================================
+% tcolorbox-Definitionen
+% ============================================
+\newtcolorbox{formelbox}[1][]{
+	colback=blue!1!white,
+	colframe=blue!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{square-root-alt} Formel},
+	#1
+}
+
+\newtcolorbox{aufgabe}[1][]{
+	colback=orange!1!white,
+	colframe=orange!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{pencil-alt} Aufgabe},
+	#1
+}
+
+\newtcolorbox{sternaufgabe}[1][]{
+	colback=red!1!white,
+	colframe=red!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{star} Sternaufgabe},
+	#1
+}
+
+\newtcolorbox{hilfebox}[1][]{
+	colback=green!1!white,
+	colframe=green!60!black,
+	fonttitle=\bfseries,
+	title={\faIcon{lightbulb} Hinweis},
+	#1
+}
+
+\newtcolorbox{infobox}[1][]{
+	colback=gray!1!white,
+	colframe=gray!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{info-circle} Information},
+	#1
+}
+
+\newtcolorbox{materialbox}[1][]{
+	colback=purple!1!white,
+	colframe=purple!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{tools} Materialien},
+	#1
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+% ============================================
+% Dokumentbeginn
+% ============================================
+\begin{document}
+
+% ============================================
+% Titel
+% ============================================
+\begin{center}
+	{\LARGE\bfseries Praktikum: Federpendel}\\[0.5cm]
+	{\large Statische und dynamische Bestimmung der Federkonstante}
+\end{center}
+
+\vspace{0.5cm}
+
+% ============================================
+% Theoretischer Hintergrund
+% ============================================
+\section*{Theoretischer Hintergrund}
+
+Wird eine Schraubenfeder mit der Masse~$m$ belastet, so dehnt sich diese Feder um einen bestimmten Weg~$s$. Dieser Weg ist abhängig von der \textbf{Federkonstanten}~$D$. Kraft und Weg sind proportional zueinander (\textbf{Hooke'sches Gesetz}):
+
+\begin{formelbox}[title={\faIcon{square-root-alt} Statische Bestimmung}]
+	\textbf{Hooke'sches Gesetz:}
+	\[ F = D \cdot s \]
+
+	Ersetzt man $F$ durch die Gewichtskraft der angehängten Masse, so ergibt sich:
+	\[ m \cdot g = D \cdot s \qquad \Rightarrow \qquad D = \frac{m \cdot g}{s} \qquad \textbf{(Gleichung 1)}\]
+\end{formelbox}
+
+Die Federkonstante lässt sich somit aus der Dehnung unter bekannter Last bestimmen (\textbf{statische Methode}).
+
+\vspace{0.3cm}
+
+Ein weiterer Weg ist die Untersuchung des \textbf{Schwingungsverhaltens} (dynamische Methode): Wird die angehängte Masse~$m$ um einen Weg~$s_0$ nach unten ausgelenkt und losgelassen, so führt das System \textbf{harmonische Schwingungen} aus. Die Schwingungsdauer ergibt sich aus der Analogie zur Kreisbewegung:
+
+\begin{formelbox}[title={\faIcon{square-root-alt} Dynamische Bestimmung}]
+	\textbf{Periodendauer des Federpendels:}
+	\[ T = 2\pi \sqrt{\frac{m}{D}} \qquad \textbf{(Gleichung 2)} \]
+
+	Umgestellt nach der Federkonstante:
+	\[ D = \frac{4\pi^2 \cdot m}{T^2} \qquad \textbf{(Gleichung 3)} \]
+\end{formelbox}
+
+\begin{hilfebox}
+	Quadriert man Gleichung~(2), ergibt sich ein \textbf{linearer Zusammenhang} zwischen $T^2$ und $m$:
+	\[ T^2 = \frac{4\pi^2}{D} \cdot m \]
+	Im $T^2$-$m$-Diagramm erhält man daher eine \textbf{Ursprungsgerade}, deren Steigung die Federkonstante~$D$ enthält.
+\end{hilfebox}
+
+\vspace{0.3cm}
+
+\begin{center}
+	\begin{tikzpicture}[scale=1.0]
+		% === Drei Zustände nebeneinander ===
+
+		% --- 1. Unbelastete Feder (links) ---
+		\begin{scope}[shift={(-3.5,0)}]
+			\fill[pattern=north east lines] (-0.8,7) rectangle (0.8,7.3);
+			\draw[thick] (-0.8,7) -- (0.8,7);
+			\draw[thick, decorate, decoration={coil, segment length=6pt, amplitude=4pt, aspect=0.5}]
+			(0,7) -- (0,5);
+			\draw[dashed, gray] (0,5) -- (2.5,5);
+			\node[below, font=\small] at (0,4.7) {\textit{ohne Last}};
+			\node[above, font=\footnotesize\bfseries] at (0,7.5) {(a)};
+		\end{scope}
+
+		% --- 2. Ruhelage = Gleichgewicht MIT Masse (Mitte) ---
+		\begin{scope}[shift={(0,0)}]
+			\fill[pattern=north east lines] (-0.8,7) rectangle (0.8,7.3);
+			\draw[thick] (-0.8,7) -- (0.8,7);
+			% Feder (gedehnt um s_stat = mg/D)
+			\draw[thick, decorate, decoration={coil, segment length=7pt, amplitude=4pt, aspect=0.5}]
+			(0,7) -- (0,3.5);
+			% Masse
+			\draw[thick, fill=blue!15] (-0.6,2.7) rectangle (0.6,3.5);
+			\node at (0,3.1) {$m$};
+			% Ruhelage-Linie
+			\draw[dashed, blue!60] (-1.5,3.1) -- (5,3.1);
+			\node[left, font=\small, blue!70!black] at (-1.5,3.1) {Ruhelage};
+			% s_stat: von unbelastetem Ende bis Ruhelage
+			\draw[<->, thick, blue!70!black] (-1.2,5) -- (-1.2,3.1);
+			\node[left, font=\small, blue!70!black] at (-1.2,4.05) {$\dfrac{mg}{D}$};
+			% Unbelastetes Ende (gestrichelt)
+			\draw[dashed, gray] (-1.5,5) -- (0,5);
+			\node[above, font=\footnotesize\bfseries] at (0,7.5) {(b)};
+		\end{scope}
+
+		% --- 3. Ausgelenkte Position (rechts) ---
+		\begin{scope}[shift={(4,0)}]
+			\fill[pattern=north east lines] (-0.8,7) rectangle (0.8,7.3);
+			\draw[thick] (-0.8,7) -- (0.8,7);
+			% Feder (weiter gedehnt)
+			\draw[thick, decorate, decoration={coil, segment length=9pt, amplitude=4pt, aspect=0.5}]
+			(0,7) -- (0,1.7);
+			% Masse (ausgelenkt)
+			\draw[thick, fill=red!15] (-0.6,0.9) rectangle (0.6,1.7);
+			\node at (0,1.3) {$m$};
+			% s_0 Auslenkung (von Ruhelage bis ausgelenkt)
+			\draw[<->, thick, red] (1.2,3.1) -- (1.2,1.3);
+			\node[right, font=\small, red] at (1.2,2.2) {$s_0$};
+			% Schwingungspfeile
+			\draw[-{Stealth[length=3mm]}, thick, red!70!black] (-1.2,3.1) -- (-1.2,1.5);
+			\draw[-{Stealth[length=3mm]}, thick, red!70!black] (-1.2,1.5) -- (-1.2,3.1);
+			\node[above, font=\footnotesize\bfseries] at (0,7.5) {(c)};
+		\end{scope}
+	\end{tikzpicture}
+
+	\vspace{0.2cm}
+	\small (a)~Feder ohne Last \quad (b)~Gleichgewichtslage mit Masse (Ruhelage) \quad (c)~Auslenkung um $s_0$
+\end{center}
+
+% ============================================
+% Versuchsaufbau
+% ============================================
+\section*{Versuchsaufbau und Durchführung}
+
+\begin{materialbox}
+	\begin{itemize}
+		\item 2 verschiedene Schraubenfedern (unterschiedliche Federkonstanten)
+		\item Massestücke (z. B.: \SI{50}{g}, \SI{100}{g}, \SI{150}{g}, \SI{200}{g})
+		\item Stativmaterial (Stativstange, Muffen, Querträger)
+		\item Maßstab / Lineal
+		\item Stoppuhr
+		\item Waage
+	\end{itemize}
+\end{materialbox}
+
+\begin{hilfebox}[title={\faIcon{lightbulb} Durchführung}]
+	\textbf{Teil A -- Statische Messung:}
+	\begin{enumerate}
+		\item Befestigen Sie die Feder am Stativ und markieren Sie die Ruhelage (ohne Last).
+		\item Hängen Sie schrittweise verschiedene Massestücke an und messen Sie jeweils die Ausdehnung~$s$.
+		\item Wiederholen Sie dies für alle drei Federn.
+	\end{enumerate}
+
+	\vspace{0.3cm}
+	\textbf{Teil B -- Dynamische Messung:}
+	\begin{enumerate}
+		\item Hängen Sie eine bekannte Masse an die Feder.
+		\item Lenken Sie die Masse vertikal aus und messen Sie die Zeit für \textbf{10 vollständige Schwingungen}.
+		\item Berechnen Sie daraus die Periodendauer~$T$.
+		\item Wiederholen Sie dies für mindestens 5~verschiedene Massen pro Feder.
+	\end{enumerate}
+\end{hilfebox}
+
+\begin{hilfebox}
+	Achten Sie darauf, dass die Feder \textbf{nicht überdehnt} wird. Die Masse soll nur in vertikaler Richtung schwingen -- keine Pendelbewegung!
+\end{hilfebox}
+
+% ============================================
+% Aufgabenstellungen
+% ============================================
+\section*{Aufgabenstellungen}
+
+\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 1: Statische Bestimmung der Federkonstante}]
+	Bestimmen Sie für alle drei Federn jeweils die Federkonstante~$D$ durch statische Messung.
+
+	Belasten Sie jede Feder schrittweise mit mindestens 5~verschiedenen Massen und messen Sie die zugehörige Dehnung~$s$. Tragen Sie die Messwerte in den Protokollbogen ein.
+\end{aufgabe}
+
+\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 2: $F$-$s$-Diagramm}]
+	Erstellen Sie für jede Feder ein $F$-$s$-Diagramm. Bestimmen Sie aus der \textbf{Steigung der Ausgleichsgeraden} die Federkonstante~$D$.
+\end{aufgabe}
+
+\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 3: Dynamische Bestimmung}]
+	Bestimmen Sie die Periodendauer~$T$ in Abhängigkeit von der angehängten Masse~$m$ (dynamische Messung). Messen Sie für jede Feder mit mindestens 5~verschiedenen Massen jeweils die Zeit für 10~Schwingungen.
+\end{aufgabe}
+
+\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 4: $T^2$-$m$-Diagramm}]
+	Erstellen Sie ein $T$-$m$-Diagramm und ein $T^2$-$m$-Diagramm.
+
+	Erklären Sie, warum das $T^2$-$m$-Diagramm eine Ursprungsgerade ergibt, und bestimmen Sie aus der Steigung die Federkonstante~$D$.
+\end{aufgabe}
+
+\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 5: Vergleich}]
+	Vergleichen Sie die statisch und dynamisch bestimmten Federkonstanten. Berechnen Sie den \textbf{relativen Fehler}:
+	\[ \text{Relativer Fehler} = \frac{|D_{\text{stat}} - D_{\text{dyn}}|}{D_{\text{stat}}} \cdot 100\% \]
+\end{aufgabe}
+
+\begin{sternaufgabe}[title={\faIcon{star} Aufgabe 6: Bestimmung von $\pi$}]
+	Berechnen Sie aus Ihren dynamischen Messwerten die Kreiszahl~$\pi$ als Mittelwert.
+
+	\textbf{Hinweis:} Stellen Sie Gleichung~(2) nach~$\pi$ um:
+	\[ \pi = \frac{T}{2} \cdot \sqrt{\frac{D}{m}} \]
+
+	Geben Sie die Abweichung vom Literaturwert an.
+\end{sternaufgabe}
+
+\begin{sternaufgabe}[title={\faIcon{star} Aufgabe 7: Zusammenfassung}]
+	Fassen Sie Ihre Ergebnisse fachgerecht zusammen. Diskutieren Sie dabei:
+	\begin{itemize}
+		\item Stimmen statische und dynamische Methode überein?
+		\item Welche systematischen Fehlerquellen gibt es?
+		\item Welche Methode halten Sie für genauer und warum?
+	\end{itemize}
+\end{sternaufgabe}
+
+% ============================================
+% Protokollbogen
+% ============================================
+\newpage
+\section*{Protokollbogen -- Federpendel}
+
+\begin{center}
+	\begin{tcolorbox}[colback=white, colframe=black, width=\textwidth, boxrule=0.5pt]
+		\begin{tabular}{@{}p{0.32\textwidth}p{0.32\textwidth}p{0.32\textwidth}@{}}
+			\textbf{Name:} \hrulefill & \textbf{Klasse:} \hrulefill & \textbf{Datum:} \hrulefill \\[0.4cm]
+			\textbf{Gruppenmitglieder:} & \multicolumn{2}{l}{\hrulefill} \\
+		\end{tabular}
+	\end{tcolorbox}
+\end{center}
+
+\subsection*{Teil A: Statische Messung}
+
+\textbf{Feder 1:}
+
+\begin{center}
+	\renewcommand{\arraystretch}{2.0}
+	\begin{tabular}{|p{2.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+		\hline
+		\textbf{Messung Nr.} & \centering\textbf{1} & \centering\textbf{2} & \centering\textbf{3} & \centering\textbf{4} & \centering\textbf{5} & \centering\arraybackslash\textbf{6} \\
+		\hline
+		$m$ in g & & & & & & \\
+		\hline
+		$F = m \cdot g$ in N & & & & & & \\
+		\hline
+		$s$ in cm & & & & & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\textbf{Feder 2:}
+
+\begin{center}
+	\renewcommand{\arraystretch}{2.0}
+	\begin{tabular}{|p{2.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+		\hline
+		\textbf{Messung Nr.} & \centering\textbf{1} & \centering\textbf{2} & \centering\textbf{3} & \centering\textbf{4} & \centering\textbf{5} & \centering\arraybackslash\textbf{6} \\
+		\hline
+		$m$ in g & & & & & & \\
+		\hline
+		$F = m \cdot g$ in N & & & & & & \\
+		\hline
+		$s$ in cm & & & & & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+
+
+\subsection*{Teil B: Dynamische Messung}
+
+\textbf{Feder 1:}
+
+\begin{center}
+	\renewcommand{\arraystretch}{2.0}
+	\begin{tabular}{|p{2.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+		\hline
+		\textbf{Messung Nr.} & \centering\textbf{1} & \centering\textbf{2} & \centering\textbf{3} & \centering\textbf{4} & \centering\textbf{5} & \centering\arraybackslash\textbf{6} \\
+		\hline
+		$m$ in g & & & & & & \\
+		\hline
+		$t_{10}$ in s & & & & & & \\
+		\hline
+		$T = t_{10}/10$ in s & & & & & & \\
+		\hline
+		$T^2$ in s$^2$ & & & & & & \\
+		\hline
+	\end{tabular}
+\end{center}
+\newpage
+\textbf{Feder 2:} 
+\begin{center}
+	\renewcommand{\arraystretch}{2.0}
+	\begin{tabular}{|p{2.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+		\hline
+		\textbf{Messung Nr.} & \centering\textbf{1} & \centering\textbf{2} & \centering\textbf{3} & \centering\textbf{4} & \centering\textbf{5} & \centering\arraybackslash\textbf{6} \\
+		\hline
+		$m$ in g & & & & & & \\
+		\hline
+		$t_{10}$ in s & & & & & & \\
+		\hline
+		$T = t_{10}/10$ in s & & & & & & \\
+		\hline
+		$T^2$ in s$^2$ & & & & & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\vspace{0.5cm}
+
+\subsection*{Auswertung}
+
+\begin{infobox}[title={\faIcon{info-circle} Einheitenumrechnung beachten!}]
+	Bei der Berechnung von $D$ müssen alle Größen in SI-Einheiten eingesetzt werden:
+	\begin{itemize}
+		\item Masse: $m$ in \si{kg} (nicht in g!)
+		\item Dehnung: $s$ in \si{m} (nicht in cm!)
+	\end{itemize}
+\end{infobox}
+
+\vspace{0.3cm}
+
+
+	\newpage
+	\subsection*{Diagramme}
+
+	\begin{hilfebox}[title={\faIcon{lightbulb} Neu: Achsen und Skalierung komplett selbst}]
+		Zeichnen Sie in die leeren Gitter jeweils selbst: \textbf{Achsenpfeile}, \textbf{Größensymbole mit Einheit}, eine \textbf{runde, gleichmäßige Skalierung}, Ihre \textbf{Messpunkte} und die \textbf{Ausgleichsgerade}.
+	\end{hilfebox}
+
+	\textbf{Diagramm 1: $F$-$s$-Diagramm (Aufgabe 2)}
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[gray!25, very thin] (0,0) grid[step=0.5] (15.5,8);
+			\draw[gray!55, thin] (0,0) grid[step=1] (15.5,8);
+		\end{tikzpicture}
+	\end{center}
+
+	\vspace{0.4cm}
+	\textbf{Diagramm 2: $T^2$-$m$-Diagramm (Aufgabe 4)}
+	\begin{center}
+		\begin{tikzpicture}
+			\draw[gray!25, very thin] (0,0) grid[step=0.5] (15.5,8);
+			\draw[gray!55, thin] (0,0) grid[step=1] (15.5,8);
+		\end{tikzpicture}
+	\end{center}
+
+\subsection*{Ergebnisübersicht}
+
+\begin{center}
+	\renewcommand{\arraystretch}{2.0}
+	\begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+		\hline
+		& \centering\textbf{Feder 1} & \centering\textbf{Feder 2} & \centering\arraybackslash \\
+		\hline
+		$D_{\text{stat}}$ in N/m & & & \\
+		\hline
+		$D_{\text{dyn}}$ in N/m & & & \\
+		\hline
+		Rel. Fehler in \% & & & \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection*{Zusammenfassung und Fehlerbetrachtung}
+
+
+
+	% ============================================
+	% Abgabevermerk (Rev. 1)
+	% ============================================
+	\vspace{0.4cm}
+	\begin{tcolorbox}[colback=yellow!8, colframe=black, boxrule=0.6pt, title={\faIcon{check-circle}\enspace Abgabevermerk -- wird vor Ort ausgefüllt}, fonttitle=\bfseries]
+		Abgegeben am \rule{2.8cm}{0.4pt} \enspace um \rule{2cm}{0.4pt} Uhr \hfill Sichtvermerk Lehrkraft: \rule{3.5cm}{0.4pt}
+
+		\vspace{0.15cm}
+		{\small\textit{Dieser Protokollbogen verbleibt in Ihrer \textbf{Praktikumsmappe}. Die vollständige Mappe wird am Ende des Schuljahres vorgelegt.} \hfill \scriptsize Rev.\,1}
+	\end{tcolorbox}
+
+\end{document}

@@ -1,0 +1,295 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+% ============================================
+% Pakete
+% ============================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\sisetup{locale=DE, per-mode=fraction}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{fontawesome5}
+\usepackage{tikz}
+\usepackage{scrlayer-scrpage}
+\usepackage{geometry}
+\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=2.5cm, headheight=1.5cm}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% ============================================
+% Kopf- und Fußzeile (KOMA-Script)
+% ============================================
+\clearpairofpagestyles
+\ihead{\includegraphics[height=1cm]{logo.jpeg}}
+\chead{\textbf{Physik-LK 11NP}}
+\ohead{\textbf{\today}}
+\cfoot{\pagemark}
+\KOMAoptions{headsepline=0.4pt}
+
+% ============================================
+% tcolorbox-Definitionen
+% ============================================
+\newtcolorbox{formelbox}[1][]{
+	colback=blue!5!white,
+	colframe=blue!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{square-root-alt} Formel},
+	#1
+}
+
+\newtcolorbox{aufgabe}[1][]{
+	colback=orange!5!white,
+	colframe=orange!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{pencil-alt} Aufgabe},
+	#1
+}
+
+\newtcolorbox{sternaufgabe}[1][]{
+	colback=red!5!white,
+	colframe=red!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{star} Sternaufgabe},
+	#1
+}
+
+\newtcolorbox{hilfebox}[1][]{
+	colback=green!5!white,
+	colframe=green!60!black,
+	fonttitle=\bfseries,
+	title={\faIcon{lightbulb} Hinweis},
+	#1
+}
+
+\newtcolorbox{materialbox}[1][]{
+	colback=purple!5!white,
+	colframe=purple!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{tools} Materialien},
+	#1
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+% ============================================
+% Dokumentbeginn
+% ============================================
+\begin{document}
+	
+	% ============================================
+	% Titel
+	% ============================================
+	\begin{center}
+		{\LARGE\bfseries Experiment 5: Wasserstoff-Elektrolyse}\\[0.5cm]
+		{\large Wirkungsgrad eines PEM-Elektrolyseurs}
+	\end{center}
+	
+	\vspace{0.5cm}
+	
+	% ============================================
+	% Theoretischer Hintergrund
+	% ============================================
+	\section*{Theoretischer Hintergrund}
+	
+	Bei der \textbf{Elektrolyse} wird Wasser mit elektrischer Energie in Wasserstoff und Sauerstoff zerlegt:
+	\[2\,\text{H}_2\text{O} \longrightarrow 2\,\text{H}_2 + \text{O}_2\]
+	
+	Der \textbf{energetische Wirkungsgrad} $\eta_E$ beschreibt, welcher Anteil der elektrischen Energie als chemische Energie im Wasserstoff gespeichert wird:
+	
+	\begin{formelbox}[title={\faIcon{square-root-alt} Energetischer Wirkungsgrad}]
+		\[\eta_E = \frac{E_{H_2}}{E_{\text{el}}} = \frac{V_{H_2} \cdot H_O}{U \cdot I \cdot t}\]
+		
+		\begin{tabular}{ll}
+			$V_{H_2}$ -- Wasserstoffvolumen in m$^3$ & $H_O = \SI{12,745e6}{\joule\per\cubic\metre}$ (Brennwert) \\
+			$U$ -- Spannung in V & $I$ -- Stromstärke in A \\
+			$t$ -- Zeit in s &
+		\end{tabular}
+	\end{formelbox}
+	
+	\begin{hilfebox}[title={\faIcon{lightbulb} Doppelelektrolyseur}]
+		Unser Elektrolyseur besteht aus \textbf{zwei Zellen in Reihe}. Beide produzieren Wasserstoff!
+		
+		$\Rightarrow$ Für $\eta_E$ das \textbf{Gesamtvolumen} $V_{\text{ges}}$ verwenden.
+	\end{hilfebox}
+	
+	% ============================================
+	% Versuchsaufbau
+	% ============================================
+	\section*{Versuchsaufbau}
+	
+	\begin{materialbox}
+		\begin{minipage}{0.48\textwidth}
+			\begin{itemize}
+				\item HTEC Doppelelektrolyseur
+				\item Spannungsquelle
+				\item Voltmeter, Amperemeter
+			\end{itemize}
+		\end{minipage}
+		\begin{minipage}{0.48\textwidth}
+			\begin{itemize}
+				\item Stoppuhr
+				\item Destilliertes Wasser
+				\item Thermometer, Barometer
+			\end{itemize}
+		\end{minipage}
+	\end{materialbox}
+	
+	% ============================================
+	% Aufgabenstellungen
+	% ============================================
+	\section*{Aufgaben}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 1: Messung}]
+		Messen Sie alle \SI{2}{min} Spannung $U$, Stromstärke $I$ und Wasserstoffvolumen $V$.
+		
+		Führen Sie 7 Messungen durch (bis $t = \SI{14}{min} = \SI{840}{s}$).
+	\end{aufgabe}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 2: Diagramm}]
+		Tragen Sie das Volumen $V$ gegen die Zeit $t$ auf und zeichnen Sie eine Ausgleichsgerade.
+	\end{aufgabe}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 3: Wirkungsgrad berechnen}]
+		Berechnen Sie den energetischen Wirkungsgrad $\eta_E$ mit:
+		\begin{itemize}
+			\item Mittelwerten $\overline{U}$ und $\overline{I}$
+			\item Gesamtvolumen $V_{\text{ges}}$ (letzter Messwert)
+			\item Gesamtzeit $t = \SI{840}{s}$
+		\end{itemize}
+		Vergleichen Sie mit dem Literaturwert: $\eta_E = 70$--$85\,\%$
+	\end{aufgabe}
+	
+	\begin{sternaufgabe}[title={\faIcon{star} Aufgabe 4: Offset-Korrektur}]
+		Die Trendlinie schneidet die $t$-Achse nicht bei $t=0$, sondern bei $t_{\text{off}}$.
+		
+		\textbf{a)} Bestimmen Sie $t_{\text{off}}$ aus dem Diagramm.
+		
+		\textbf{b)} Berechnen Sie $\eta_E$ erneut mit der effektiven Zeit $t_{\text{eff}} = t - t_{\text{off}}$.
+		
+		\textbf{c)} Erklären Sie die Ursache des Offsets.
+	\end{sternaufgabe}
+	
+	% ============================================
+	% Protokollbogen
+	% ============================================
+	\newpage
+	\section*{Protokollbogen}
+	
+	\begin{center}
+		\begin{tcolorbox}[colback=white, colframe=black, width=\textwidth, boxrule=0.5pt]
+			\begin{tabular}{@{}p{0.32\textwidth}p{0.32\textwidth}p{0.32\textwidth}@{}}
+				\textbf{Name:} \hrulefill & \textbf{Klasse:} \hrulefill & \textbf{Datum:} \hrulefill \\[0.4cm]
+				\textbf{Gruppenmitglieder:} & \multicolumn{2}{l}{\hrulefill} \\
+			\end{tabular}
+		\end{tcolorbox}
+	\end{center}
+	
+	\textbf{Raumbedingungen:} \quad $T = $ \rule{2cm}{0.4pt} K \qquad $p = $ \rule{2cm}{0.4pt} Pa
+	
+	\subsection*{Messwerte}
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{2.2}
+		\begin{tabular}{|p{2.5cm}|p{1.4cm}|p{1.4cm}|p{1.4cm}|p{1.4cm}|p{1.4cm}|p{1.4cm}|p{1.4cm}|}
+			\hline
+			\textbf{Zeit} $t$ in s & 120 & 240 & 360 & 480 & 600 & 720 & 840 \\
+			\hline
+			\textbf{Spannung} $U$ in V & & & & & & & \\
+			\hline
+			\textbf{Strom} $I$ in A & & & & & & & \\
+			\hline
+			\textbf{Volumen} $V$ in ml & & & & & & & \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\textbf{Mittelwerte:} \quad $\overline{U} = $ \rule{2cm}{0.4pt} V \qquad $\overline{I} = $ \rule{2cm}{0.4pt} A \qquad $V_{\text{ges}} = $ \rule{2cm}{0.4pt} ml
+	
+	\subsection*{$t$-$V$-Diagramm}
+	
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[
+				width=14cm,
+				height=7cm,
+				xlabel={Zeit $t$ in s},
+				ylabel={Volumen $V$ in ml},
+				xmin=0, xmax=900,
+				ymin=0, ymax=35,
+				xtick={0,100,200,300,400,500,600,700,800,900},
+				ytick={0,5,10,15,20,25,30,35},
+				xticklabels={}, yticklabels={},
+				grid=both,
+				grid style={line width=0.2pt, draw=gray!30},
+				major grid style={line width=0.4pt, draw=gray!60},
+				axis lines=middle,
+				axis line style={->, thick},
+				every axis x label/.style={at={(ticklabel* cs:1.02)}, anchor=west},
+				every axis y label/.style={at={(ticklabel* cs:1.02)}, anchor=south}
+				]
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+	
+	\subsection*{Berechnung}
+	
+	\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black]
+		$\eta_E = \dfrac{V_{\text{ges}} \cdot H_O}{\overline{U} \cdot \overline{I} \cdot t}$ \qquad mit $H_O = \SI{12,745e6}{J/m^3}$ und $\SI{1}{ml} = \SI{1e-6}{m^3}$
+	\end{tcolorbox}
+	
+	\vspace{0.3cm}
+	
+	\textbf{Zähler:} \quad $E_{H_2} = V_{\text{ges}} \cdot H_O = $ \rule{6cm}{0.4pt} J
+	
+	\vspace{0.5cm}
+	
+	\textbf{Nenner:} \quad $E_{\text{el}} = \overline{U} \cdot \overline{I} \cdot t = $ \rule{6cm}{0.4pt} J
+	
+	\vspace{0.5cm}
+	
+	\textbf{Ergebnis:} \quad $\eta_E = $ \rule{3cm}{0.4pt} $= $ \rule{2cm}{0.4pt} \%
+	
+	\vspace{0.8cm}
+	
+	\begin{tcolorbox}[colback=yellow!10!white, colframe=yellow!50!black]
+		\textbf{Literaturwert:} $\eta_E = 70$--$85\,\%$ \hfill \textbf{Bewertung:} \rule{4cm}{0.4pt}
+	\end{tcolorbox}
+	
+	\subsection*{Sternaufgabe: Offset-Korrektur}
+	
+	\textbf{a)} Offset aus Diagramm: \quad $t_{\text{off}} = $ \rule{2cm}{0.4pt} s
+	
+	\vspace{0.3cm}
+	
+	\textbf{b)} Effektive Zeit: \quad $t_{\text{eff}} = \SI{840}{s} - $ \rule{1.5cm}{0.4pt} s $= $ \rule{2cm}{0.4pt} s
+	
+	\vspace{0.3cm}
+	
+	\hspace{0.5cm} Korrigierter Wirkungsgrad: \quad $\eta_{E,\text{korr}} = $ \rule{3cm}{0.4pt} $= $ \rule{2cm}{0.4pt} \%
+	
+	\vspace{0.5cm}
+	
+	\textbf{c)} Ursache des Offsets:
+	
+	\vspace{2cm}
+	
+
+	% ============================================
+	% Abgabevermerk (Rev. 1)
+	% ============================================
+	\vspace{0.4cm}
+	\begin{tcolorbox}[colback=yellow!8, colframe=black, boxrule=0.6pt, title={\faIcon{check-circle}\enspace Abgabevermerk -- wird vor Ort ausgefüllt}, fonttitle=\bfseries]
+		Abgegeben am \rule{2.8cm}{0.4pt} \enspace um \rule{2cm}{0.4pt} Uhr \hfill Sichtvermerk Lehrkraft: \rule{3.5cm}{0.4pt}
+
+		\vspace{0.15cm}
+		{\small\textit{Dieser Protokollbogen verbleibt in Ihrer \textbf{Praktikumsmappe}. Die vollständige Mappe wird am Ende des Schuljahres vorgelegt.} \hfill \scriptsize Rev.\,1}
+	\end{tcolorbox}
+
+\end{document}

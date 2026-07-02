@@ -1,0 +1,369 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+% ============================================
+% Pakete
+% ============================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\sisetup{locale=DE, per-mode=fraction}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{fontawesome5}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, decorations.pathmorphing}
+\usepackage{scrlayer-scrpage}
+\usepackage{geometry}
+\geometry{left=2cm, right=2cm, top=2.5cm, bottom=2cm, headheight=1.5cm}
+
+% ============================================
+% Kopf- und Fußzeile (KOMA-Script)
+% ============================================
+\clearpairofpagestyles
+\ihead{\includegraphics[height=1cm]{logo.jpeg}}
+\chead{\textbf{Physik-LK 11NP}}
+\ohead{\textbf{\today}}
+\cfoot{\pagemark}
+\KOMAoptions{headsepline=0.4pt}
+
+% ============================================
+% tcolorbox-Definitionen
+% ============================================
+\newtcolorbox{formelbox}[1][]{
+	colback=blue!5!white,
+	colframe=blue!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{square-root-alt} Formel},
+	#1
+}
+
+\newtcolorbox{aufgabe}[1][]{
+	colback=orange!5!white,
+	colframe=orange!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{pencil-alt} Aufgabe},
+	#1
+}
+
+\newtcolorbox{hilfebox}[1][]{
+	colback=green!5!white,
+	colframe=green!60!black,
+	fonttitle=\bfseries,
+	title={\faIcon{lightbulb} Hinweis},
+	#1
+}
+
+\newtcolorbox{infobox}[1][]{
+	colback=gray!5!white,
+	colframe=gray!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{info-circle} Information},
+	#1
+}
+
+\newtcolorbox{materialbox}[1][]{
+	colback=purple!5!white,
+	colframe=purple!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{tools} Materialien},
+	#1
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4em}
+
+% ============================================
+% Dokumentbeginn
+% ============================================
+\begin{document}
+	
+	% ============================================
+	% Titel
+	% ============================================
+	\begin{center}
+		{\LARGE\bfseries Experiment 1: Bewegung mit konstanter Geschwindigkeit}\\[0.3cm]
+		{\large Geradlinig gleichförmige Bewegung}
+	\end{center}
+	
+	\vspace{0.3cm}
+	
+	% ============================================
+	% Theoretischer Hintergrund
+	% ============================================
+	\section*{Theoretischer Hintergrund}
+	
+	Legt ein Körper auf einer geraden Bahn in \textbf{gleichen Zeiten} stets die \textbf{gleichen Wege} zurück, so spricht man von einer \textbf{geradlinig gleichförmigen Bewegung}. Der Quotient aus Wegdifferenz und Zeitdifferenz ist dabei konstant:
+	
+	\begin{formelbox}[title={\faIcon{square-root-alt} Geschwindigkeit}]
+		\[\frac{s_2 - s_1}{t_2 - t_1} = \frac{\Delta s}{\Delta t} = v = \text{konstant}\]
+		
+		Mit $s = 0$ bei $t = 0$ vereinfacht sich die Gleichung zu:
+		\[v = \frac{s}{t} \qquad \text{bzw.} \qquad s = v \cdot t\]
+		
+		\textbf{Einheit:} $[v] = \SI{1}{\metre\per\second}$
+	\end{formelbox}
+	
+	\vspace{0.2cm}
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=0.9]
+			% t-s-Diagramm
+			\begin{scope}[xshift=0cm]
+				\draw[->] (0,0) -- (4.5,0) node[right] {$t$ in s};
+				\draw[->] (0,0) -- (0,3.5) node[above] {$s$ in m};
+				\draw[thick, blue] (0,0) -- (4,3);
+				\draw[dashed] (2,0) node[below] {$t_1$} -- (2,1.5) -- (0,1.5) node[left] {$s_1$};
+				\draw[dashed] (3.5,0) node[below] {$t_2$} -- (3.5,2.625) -- (0,2.625) node[left] {$s_2$};
+				\draw[<->] (2,1.5) -- (3.5,1.5) node[midway, below] {$\Delta t$};
+				\draw[<->] (3.5,1.5) -- (3.5,2.625) node[midway, right] {$\Delta s$};
+				\node[below] at (2,-0.8) {\textbf{$t$-$s$-Diagramm}};
+			\end{scope}
+			
+			% t-v-Diagramm
+			\begin{scope}[xshift=7cm]
+				\draw[->] (0,0) -- (4.5,0) node[right] {$t$ in s};
+				\draw[->] (0,0) -- (0,3.5) node[above] {$v$ in $\frac{\text{m}}{\text{s}}$};
+				\draw[thick, red] (0,2) -- (4,2);
+				\draw[dashed] (0,2) node[left] {$v$};
+				\fill[red!30, opacity=0.5] (0,0) rectangle (3,2);
+				\draw[dashed] (3,0) node[below] {$t_1$} -- (3,2);
+				\node at (1.5,1) {$s = v \cdot t_1$};
+				\node[below] at (2,-0.8) {\textbf{$t$-$v$-Diagramm}};
+			\end{scope}
+		\end{tikzpicture}
+	\end{center}
+	
+	\begin{hilfebox}
+		Im $t$-$s$-Diagramm ist die \textbf{Steigung} der Geraden gleich der Geschwindigkeit $v$.\\
+		Im $t$-$v$-Diagramm entspricht die \textbf{Fläche} unter der Kurve dem zurückgelegten Weg $s$.
+	\end{hilfebox}
+	
+	% ============================================
+	% Versuchsaufbau
+	% ============================================
+	\section*{Versuchsaufbau}
+	
+	\begin{materialbox}
+		\begin{minipage}{0.48\textwidth}
+			\begin{itemize}
+				\item Fahrbahn mit Wagen
+				\item Umlenkrolle
+				\item Zeit-Registriergerät
+			\end{itemize}
+		\end{minipage}
+		\begin{minipage}{0.48\textwidth}
+			\begin{itemize}
+				\item Gewicht \SI{10,2}{\gram} (Antrieb)
+				\item Gewicht \SI{100}{\gram} (Zusatzmasse)
+				\item Registrierstreifen
+			\end{itemize}
+		\end{minipage}
+	\end{materialbox}
+	
+	\vspace{0.3cm}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.95\textwidth]{fahrbahn.png}
+		\caption{Versuchsaufbau mit Fahrbahn, Zeit-Registriergerät und Antriebsmasse}
+		\label{fig:fahrbahn1}
+	\end{figure}
+	
+	% ============================================
+	% Durchführung
+	% ============================================
+	\section*{Durchführung}
+	
+	Bauen Sie den Versuch gemäß Abbildung~\ref{fig:fahrbahn1} auf.
+	
+	\begin{enumerate}
+		\item Bauen Sie die Fahrbahn mit Zeit-Registriergerät und Umlenkrolle auf.
+		\item Bestücken Sie den Wagen mit der Zusatzmasse (\SI{100}{\gram}).
+		\item Stellen Sie die Fadenlänge so ein, dass das Gewicht nach \SI{15}{cm} den Boden erreicht.
+		\item Kompensieren Sie die Reibung durch leichte Neigung der Fahrbahn.
+		\item Stellen Sie das Registriergerät auf \textbf{10 Hz} ein.
+		\item Führen Sie \textbf{3 Messungen} durch und beschriften Sie die Streifen.
+	\end{enumerate}
+	
+	\begin{hilfebox}[title={\faIcon{lightbulb} Wichtig}]
+		\textbf{Auswertung erst ab 15 cm!} Der Nullpunkt wird an diese Stelle gelegt.\\
+		Den Registrierstreifen nicht unnötig berühren und dem Protokoll beilegen!
+	\end{hilfebox}
+	
+	% ============================================
+	% Aufgaben
+	% ============================================
+	\section*{Aufgabenstellungen}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgaben}]
+		\begin{enumerate}
+			\item Nehmen Sie einen Registrierstreifen mit \textbf{10 Hz}-Einstellung auf (3 Messungen).
+			\item Tragen Sie die Messwerte für $s$ und $t$ in die vorgegebene Tabelle ein.
+			\item Zeichnen Sie das $t$-$s$-Diagramm in das vorgegebene Koordinatensystem.
+			\item Berechnen Sie die Geschwindigkeit $v$ für jedes Intervall und tragen Sie die Werte ein.
+			\item Zeichnen Sie das $t$-$v$-Diagramm.
+			\item Bestimmen Sie die mittlere Geschwindigkeit und die Messunsicherheit.
+		\end{enumerate}
+	\end{aufgabe}
+	
+	% ============================================
+	% Protokollbogen
+	% ============================================
+	\newpage
+	\section*{Protokollbogen -- Experiment 1}
+	
+	\begin{center}
+		\begin{tcolorbox}[colback=white, colframe=black, width=\textwidth, boxrule=0.5pt]
+			\begin{tabular}{@{}p{0.32\textwidth}p{0.32\textwidth}p{0.32\textwidth}@{}}
+				\textbf{Name:} \hrulefill & \textbf{Klasse:} \hrulefill & \textbf{Datum:} \hrulefill \\[0.4cm]
+				\textbf{Gruppenmitglieder:} & \multicolumn{2}{l}{\hrulefill} \\
+			\end{tabular}
+		\end{tcolorbox}
+	\end{center}
+	
+	\subsection*{1. Messwerte (aus dem Registrierstreifen ablesen)}
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{1.8}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+			\hline
+			$t$ in s & 0 & 0,1 & 0,2 & 0,3 & 0,4 & 0,5 & 0,6 & 0,7 & 0,8 & 0,9 & 1,0 & 1,1 & 1,2 \\
+			\hline
+			$s$ in m & 0 & & & & & & & & & & & & \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\subsection*{2. $t$-$s$-Diagramm}
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=1]
+			% Koordinatensystem
+			\draw[->] (0,0) -- (13,0) node[right] {$t$ in s};
+			\draw[->] (0,0) -- (0,8) node[above] {$s$ in m};
+			
+			% Gitternetz
+			\draw[gray!30, very thin] (0,0) grid[step=0.5] (12.5,7.5);
+			\draw[gray!50, thin] (0,0) grid[step=1] (12.5,7.5);
+			
+			% Achsenbeschriftung x
+			\foreach \x in {0,0.2,0.4,0.6,0.8,1.0,1.2} {
+				\node[below] at (\x*10,0) {\small \x};
+			}
+			
+			% Achsenbeschriftung y
+			\foreach \y in {0,0.1,0.2,0.3,0.4,0.5,0.6,0.7} {
+				\node[left] at (0,\y*10) {\small \y};
+			}
+		\end{tikzpicture}
+	\end{center}
+	
+	\subsection*{3. Berechnung der Intervallgeschwindigkeit}
+	
+	\begin{infobox}[title={\faIcon{info-circle} Berechnung}]
+		$\displaystyle v = \frac{s}{t} = \frac{\rule{1.5cm}{0.4pt}}{\rule{1.5cm}{0.4pt}} = \rule{2cm}{0.4pt}\;\si{\metre\per\second}$
+	\end{infobox}
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{1.8}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+			\hline
+			$t$ in s & 0 & 0,1 & 0,2 & 0,3 & 0,4 & 0,5 & 0,6 & 0,7 & 0,8 & 0,9 & 1,0 & 1,1 & 1,2 \\
+			\hline
+			$v$ in $\frac{\text{m}}{\text{s}}$ & 0 & & & & & & & & & & & & \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	% ============================================
+	% Protokollbogen Seite 2
+	% ============================================
+	\newpage
+	
+	\subsection*{4. $t$-$v$-Diagramm}
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=1]
+			% Koordinatensystem
+			\draw[->] (0,0) -- (13,0) node[right] {$t$ in s};
+			\draw[->] (0,0) -- (0,8) node[above] {$v$ in $\frac{\text{m}}{\text{s}}$};
+			
+			% Gitternetz
+			\draw[gray!30, very thin] (0,0) grid[step=0.5] (12.5,7.5);
+			\draw[gray!50, thin] (0,0) grid[step=1] (12.5,7.5);
+			
+			% Achsenbeschriftung x
+			\foreach \x in {0,0.2,0.4,0.6,0.8,1.0,1.2} {
+				\node[below] at (\x*10,0) {\small \x};
+			}
+			
+			% Achsenbeschriftung y
+			\foreach \y in {0,0.1,0.2,0.3,0.4,0.5,0.6,0.7} {
+				\node[left] at (0,\y*10) {\small \y};
+			}
+		\end{tikzpicture}
+	\end{center}
+	
+	\subsection*{5. Ergebnis}
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{2}
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			& \textbf{Messung 1} & \textbf{Messung 2} & \textbf{Messung 3} & \textbf{Mittelwert} \\
+			\hline
+			$v$ in $\si{\metre\per\second}$ & & & & \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\vspace{0.5cm}
+	
+	\begin{tcolorbox}[colback=yellow!10!white, colframe=yellow!50!black, width=\textwidth]
+		\textbf{Ergebnis:} \hfill $\bar{v} = \rule{2cm}{0.4pt} \pm \rule{1.5cm}{0.4pt}\;\si{\metre\per\second}$
+	\end{tcolorbox}
+	
+	\vspace{0.5cm}
+	
+	\subsection*{6. Auswertung}
+	
+	\textbf{Beschreiben Sie die Form der Messkurven:}
+	
+	\vspace{1.5cm}
+	
+	\textbf{Was zeigt das $t$-$s$-Diagramm?}
+	
+	\vspace{1.5cm}
+	
+	\textbf{Was zeigt das $t$-$v$-Diagramm?}
+	
+	\vspace{1.5cm}
+	
+	\begin{hilfebox}[title={\faIcon{lightbulb} Checkliste vor Abgabe}]
+		\begin{itemize}
+			\item[$\square$] Registrierstreifen beschriftet und beigelegt
+			\item[$\square$] Alle Messwerte eingetragen
+			\item[$\square$] Beide Diagramme gezeichnet (Punkte + Ausgleichsgerade/-linie)
+			\item[$\square$] Geschwindigkeit berechnet und Mittelwert gebildet
+			\item[$\square$] Ergebnis mit Einheit angegeben
+		\end{itemize}
+	\end{hilfebox}
+	
+
+	% ============================================
+	% Abgabevermerk (Rev. 1)
+	% ============================================
+	\vspace{0.4cm}
+	\begin{tcolorbox}[colback=yellow!8, colframe=black, boxrule=0.6pt, title={\faIcon{check-circle}\enspace Abgabevermerk -- wird vor Ort ausgefüllt}, fonttitle=\bfseries]
+		Abgegeben am \rule{2.8cm}{0.4pt} \enspace um \rule{2cm}{0.4pt} Uhr \hfill Sichtvermerk Lehrkraft: \rule{3.5cm}{0.4pt}
+
+		\vspace{0.15cm}
+		{\small\textit{Dieser Protokollbogen verbleibt in Ihrer \textbf{Praktikumsmappe}. Die vollständige Mappe wird am Ende des Schuljahres vorgelegt.} \hfill \scriptsize Rev.\,1}
+	\end{tcolorbox}
+
+\end{document}

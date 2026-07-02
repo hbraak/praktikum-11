@@ -1,0 +1,417 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+% ============================================
+% Pakete
+% ============================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\sisetup{locale=DE, per-mode=fraction}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{fontawesome5}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, decorations.pathmorphing}
+\usepackage{scrlayer-scrpage}
+\usepackage{geometry}
+\geometry{left=2.5cm, right=2.5cm, top=3cm, bottom=2.5cm, headheight=1.5cm}
+
+% ============================================
+% Kopf- und Fußzeile (KOMA-Script)
+% ============================================
+\clearpairofpagestyles
+\ihead{\includegraphics[height=1cm]{logo.jpeg}}
+\chead{\textbf{Physik-LK 11NP}}
+\ohead{\textbf{\today}}
+\cfoot{\pagemark}
+\KOMAoptions{headsepline=0.4pt}
+
+% ============================================
+% tcolorbox-Definitionen
+% ============================================
+\newtcolorbox{formelbox}[1][]{
+	colback=blue!5!white,
+	colframe=blue!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{square-root-alt} Formel},
+	#1
+}
+
+\newtcolorbox{aufgabe}[1][]{
+	colback=orange!5!white,
+	colframe=orange!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{pencil-alt} Aufgabe},
+	#1
+}
+
+\newtcolorbox{sternaufgabe}[1][]{
+	colback=red!5!white,
+	colframe=red!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{star} Sternaufgabe},
+	#1
+}
+
+\newtcolorbox{hilfebox}[1][]{
+	colback=green!5!white,
+	colframe=green!60!black,
+	fonttitle=\bfseries,
+	title={\faIcon{lightbulb} Hinweis},
+	#1
+}
+
+\newtcolorbox{infobox}[1][]{
+	colback=gray!5!white,
+	colframe=gray!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{info-circle} Information},
+	#1
+}
+
+\newtcolorbox{materialbox}[1][]{
+	colback=purple!5!white,
+	colframe=purple!75!black,
+	fonttitle=\bfseries,
+	title={\faIcon{tools} Materialien},
+	#1
+}
+
+% ============================================
+% Dokumentbeginn
+% ============================================
+\begin{document}
+	
+	% ============================================
+	% Titel
+	% ============================================
+	\begin{center}
+		{\LARGE\bfseries Praktikum: Bestimmung der Erdbeschleunigung}\\[0.5cm]
+		{\large Freier Fall mit akustischer Zeitmessung (phyphox)}
+	\end{center}
+	
+	\vspace{0.5cm}
+	
+	% ============================================
+	% Theoretischer Hintergrund
+	% ============================================
+	\section*{Theoretischer Hintergrund}
+	
+	Zu den Bewegungen mit konstanter Beschleunigung gehört auch die des \textbf{freien Falls}. Das ist eine Bewegung, die entsteht, wenn auf einen fallenden Körper nur seine Gewichtskraft einwirkt. Die Fallbeschleunigung wird als Größe mit $g$ bezeichnet.
+	
+	\begin{formelbox}[title={\faIcon{square-root-alt} Einheit der Fallbeschleunigung}]
+		\begin{equation*}
+			[g] = \si{\metre\per\second\squared}
+		\end{equation*}
+	\end{formelbox}
+	
+	\begin{infobox}[title={\faIcon{info-circle} Ortsabhängigkeit der Erdbeschleunigung}]
+		Die Fallbeschleunigung oder Erdbeschleunigung ist \textbf{keine Naturkonstante}. Mit Hilfe des Gravitationsgesetzes (Massenanziehung) kann diese Größe für jeden Ort bestimmt werden. Auf der Erde spielt dabei der Abstand zum Erdmittelpunkt eine wesentliche Rolle.
+		
+		\vspace{0.3cm}
+		\begin{center}
+			\begin{tabular}{lc}
+				\toprule
+				\textbf{Ort} & \textbf{Fallbeschleunigung} \\
+				\midrule
+				Panama & \SI{9,78}{\metre\per\second\squared} \\
+				Nordpol & \SI{9,83}{\metre\per\second\squared} \\
+				Jupiter & ca. \SI{26,00}{\metre\per\second\squared} \\
+				\bottomrule
+			\end{tabular}
+		\end{center}
+	\end{infobox}
+	
+	Wenn man Fallwege und Fallzeiten misst, so gelten die Gesetze für die Bewegung mit konstanter Beschleunigung:
+	
+	\begin{formelbox}[title={\faIcon{square-root-alt} Bewegungsgleichungen des freien Falls}]
+		\textbf{Weg-Zeit-Gesetz:}
+		\begin{equation*}
+			s = \frac{1}{2} \cdot a \cdot t^2 \quad \Rightarrow \quad h = \frac{1}{2} \cdot g \cdot t^2
+		\end{equation*}
+		
+		\textbf{Geschwindigkeit-Zeit-Gesetz:}
+		\begin{equation*}
+			v = a \cdot t \quad \Rightarrow \quad v = g \cdot t
+		\end{equation*}
+	\end{formelbox}
+	
+	% ============================================
+	% Versuchsprinzip
+	% ============================================
+	\section*{Versuchsprinzip}
+	
+	Um das Weg-Zeit-Gesetz anzuwenden, lässt man eine Kugel, die von einem Elektromagneten gehalten wird, Höhen zwischen \SI{0,1}{\metre} und \SI{1,0}{\metre} durchfallen. 
+	
+	\begin{hilfebox}
+		Der Elektromagnet wird mit einer \textbf{Wechselspannung} betrieben, die so groß ist, dass die Kugel gerade noch gehalten wird. Bei Gleichspannung bleiben leichte Kugeln wegen des Restmagnetismus trotz abgeschaltetem Strom länger hängen.
+	\end{hilfebox}
+	
+	\begin{infobox}[title={\faIcon{info-circle} Die App phyphox}]
+		Die App \textbf{phyphox} (physical phone experiments) wird von der RWTH Aachen entwickelt und steht kostenlos zur Verfügung. Sie ermöglicht es, mit den Sensoren des Smartphones zu experimentieren und Messwerte aufzunehmen.
+		
+		\vspace{0.2cm}
+		\textbf{Download:} \quad iOS: App Store \quad | \quad Android: Google Play Store
+		
+		\vspace{0.2cm}
+		\textbf{Website:} \texttt{https://phyphox.org}
+	\end{infobox}
+	
+	% ============================================
+	% Versuchsaufbau
+	% ============================================
+	\section*{Versuchsaufbau}
+	
+	\begin{materialbox}
+		\begin{itemize}
+			\item Haltemagnet (Elektromagnet)
+			\item Schalter
+			\item Metallkugel
+			\item Niederspannungsquelle (Wechselspannung)
+			\item Smartphone mit \textbf{phyphox}-App (kostenlos, RWTH Aachen)
+			\item Maßstab mit Stativfuß
+		\end{itemize}
+	\end{materialbox}
+	
+	\vspace{0.5cm}
+	
+	\begin{center}
+		\begin{tikzpicture}[scale=0.85]
+			% Stativ-Fuß
+			\draw[thick, fill=gray!30] (0,0) rectangle (2.5,0.3);
+			
+			% Stativ-Stange
+			\draw[thick, fill=gray!50] (1.1,0.3) rectangle (1.4,8);
+			
+			% Elektromagnet mit zwei Anschlüssen
+			\draw[thick, fill=blue!30] (0.6,7.6) rectangle (1.9,8.1);
+			\node[above] at (1.25,8.1) {\small Elektromagnet};
+			% Anschlusspunkte
+			\fill[black] (0.8,7.6) circle (0.06);
+			\fill[black] (1.7,7.6) circle (0.06);
+			
+			% Kugel am Magneten
+			\fill[green!70!black] (1.25,7.25) circle (0.3);
+			
+			% Maßstab (rechts neben Stativ)
+			\draw[thick] (2.2,0.5) -- (2.2,7.8);
+			\foreach \y in {1,2,3,4,5,6,7} {
+				\draw (2.1,\y) -- (2.3,\y);
+				\node[right, font=\tiny] at (2.3,\y) {\y 0};
+			}
+			\node[right] at (2.4,4) {\small cm};
+			
+			% Aufprallfläche (Boden/Platte)
+			\draw[thick, fill=gray!20] (0,0) rectangle (2.5,-0.15);
+			
+			% ===== Stromkreis mit normgerechten Symbolen =====
+			
+			% Linke Seite: vom linken Elektromagnet-Anschluss zum Schalter
+			\draw[thick] (0.8,7.6) -- (0.8,7.2) -- (-1.5,7.2) -- (-1.5,4);
+			
+			% Schalter (normgerecht: offener Schalter)
+			\fill[black] (-1.5,4) circle (0.08); % Kontaktpunkt oben
+			\draw[thick] (-1.5,4) -- (-1.1,3.2); % Schalterhebel (offen)
+			\fill[black] (-1.5,3) circle (0.08); % Kontaktpunkt unten
+			\node[left] at (-1.7,3.5) {\small Schalter};
+			
+			% Vom Schalter zur Spannungsquelle
+			\draw[thick] (-1.5,3) -- (-1.5,1);
+			
+			% Wechselspannungsquelle (Kreis mit Sinuswelle)
+			\draw[thick] (-1.5,0.5) circle (0.5);
+			\draw[thick] (-1.85,0.5) sin (-1.65,0.7) cos (-1.5,0.5) sin (-1.35,0.3) cos (-1.15,0.5);
+			\node[left] at (-2.1,0.5) {\small $U_{\sim}$};
+			
+			% Von Spannungsquelle zum rechten Elektromagnet-Anschluss
+			\draw[thick] (-1.5,0) -- (-1.5,-0.5) -- (2.8,-0.5) -- (2.8,7.2) -- (1.7,7.2) -- (1.7,7.6);
+			
+			% Smartphone/phyphox (links unten)
+			\draw[thick, fill=cyan!20, rounded corners=4pt] (-4.5,0) rectangle (-2.5,2.5);
+			\draw[thick, fill=black, rounded corners=2pt] (-4.3,0.2) rectangle (-2.7,2.3);
+			\node[white] at (-3.5,1.25) {\small phyphox};
+			\node[below] at (-3.5,0) {\small Smartphone};
+			
+			% Schallwellen-Symbole (vom Schalter und vom Aufprall zum Smartphone)
+			\draw[thick, gray, decorate, decoration={snake, amplitude=1pt, segment length=4pt}] (-1.3,3.5) -- (-2.5,2.0);
+			\draw[thick, gray, decorate, decoration={snake, amplitude=1pt, segment length=4pt}] (0,0) -- (-2.5,1.0);
+			
+			% Höhenpfeil h
+			\draw[<->, very thick, red!70!black] (3.4,0.15) -- (3.4,7.25);
+			\node[right, red!70!black] at (3.5,3.7) {\large $h$};
+			
+		\end{tikzpicture}
+	\end{center}
+	
+	\begin{hilfebox}[title={\faIcon{lightbulb} Zeitmessung mit phyphox}]
+		Die Fallzeit wird mit der \textbf{akustischen Stoppuhr} in der phyphox-App bestimmt:
+		\begin{enumerate}
+			\item Öffnen Sie in phyphox das Experiment \textbf{„Akustische Stoppuhr"} (unter Zeitmessung).
+			\item Im Reiter \textbf{„EINFACH"} stellen Sie die \textbf{Schwelle} so ein, dass Umgebungsgeräusche ignoriert werden.
+			\item Stellen Sie eine \textbf{Mindestverzögerung} von ca. \SI{0,1}{\second} ein, damit das Startgeräusch die Messung nicht sofort stoppt.
+			\item Das Klacken des Schalters startet die Stoppuhr, der Aufprall der Kugel stoppt sie.
+		\end{enumerate}
+		\textbf{Tipp:} Positionieren Sie das Smartphone auf halber Fallhöhe, um den Einfluss der Schallgeschwindigkeit zu minimieren.
+	\end{hilfebox}
+	
+	% ============================================
+	% Aufgabenstellungen
+	% ============================================
+	\section*{Aufgabenstellungen}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 1: Messung}]
+		Bestimmen Sie Fallzeiten bei mindestens \textbf{5 unterschiedlichen Höhen}. Führen Sie für jede Höhe mindestens \textbf{3 Zeitmessungen} durch und tragen Sie den Mittelwert in den Protokollbogen ein.
+	\end{aufgabe}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 2: Auswertung}]
+		Berechnen Sie aus den Messwerten die Erdbeschleunigung $g$. Die Beschleunigung wird wie folgt berechnet:
+		
+		\begin{equation*}
+			h = \frac{1}{2} \cdot g \cdot t^2 \quad \Rightarrow \quad g = \frac{2 \cdot h}{t^2}
+		\end{equation*}
+		
+		Tragen Sie die berechneten Werte in den Protokollbogen ein und berechnen Sie den \textbf{Mittelwert} sowie die \textbf{Messunsicherheit} von $g$.
+	\end{aufgabe}
+	
+	\begin{aufgabe}[title={\faIcon{pencil-alt} Aufgabe 3: Vergleich mit Literaturwert}]
+		Vergleichen Sie Ihren Messwert mit dem Literaturwert von $g_{\text{Lit}} = \SI{9,81}{\metre\per\second\squared}$, indem Sie die \textbf{relative Abweichung} bestimmen:
+		
+		\begin{equation*}
+			\text{Relative Abweichung} = \frac{|g_{\text{Mess}} - g_{\text{Lit}}|}{g_{\text{Lit}}} \cdot 100\%
+		\end{equation*}
+	\end{aufgabe}
+	
+	\begin{sternaufgabe}[title={\faIcon{star} Aufgabe 4: Fehleranalyse}]
+		Diskutieren Sie mögliche \textbf{Fehlerquellen} des Experiments. Berücksichtigen Sie dabei:
+		
+		\begin{itemize}
+			\item Systematische Fehler
+			\item Zufällige Fehler
+			\item Einfluss des Luftwiderstands
+			\item Genauigkeit der Zeitmessung
+			\item Genauigkeit der Höhenmessung
+		\end{itemize}
+	\end{sternaufgabe}
+	
+	% ============================================
+	% Protokollbogen (Anhang)
+	% ============================================
+	\newpage
+	\section*{Protokollbogen -- Experiment 3}
+	
+	\begin{center}
+		\begin{tcolorbox}[colback=white, colframe=black, width=\textwidth, boxrule=0.5pt]
+			\begin{tabular}{@{}p{0.32\textwidth}p{0.32\textwidth}p{0.32\textwidth}@{}}
+				\textbf{Name:} \hrulefill & \textbf{Klasse:} \hrulefill & \textbf{Datum:} \hrulefill \\[0.4cm]
+				\textbf{Gruppenmitglieder:} & \multicolumn{2}{l}{\hrulefill} \\
+			\end{tabular}
+		\end{tcolorbox}
+	\end{center}
+	
+	\subsection*{1. Messwerte}
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{2.5}
+		\begin{tabular}{|p{3.8cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+			\hline
+			\textbf{Messung Nr.} & \centering\textbf{1} & \centering\textbf{2} & \centering\textbf{3} & \centering\textbf{4} & \centering\textbf{5} & \centering\arraybackslash\textbf{6} \\
+			\hline
+			Höhe $h$ in cm & & & & & & \\
+			\hline
+			Fallzeit $t_1$ in ms & & & & & & \\
+			\hline
+			Fallzeit $t_2$ in ms & & & & & & \\
+			\hline
+			Fallzeit $t_3$ in ms & & & & & & \\
+			\hline
+			Mittelwert $\bar{t}$ in ms & & & & & & \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\subsection*{2. Auswertung}
+	
+	\begin{center}
+		\renewcommand{\arraystretch}{2.5}
+		\begin{tabular}{|p{3.8cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
+			\hline
+			\textbf{Messung Nr.} & \centering\textbf{1} & \centering\textbf{2} & \centering\textbf{3} & \centering\textbf{4} & \centering\textbf{5} & \centering\arraybackslash\textbf{6} \\
+			\hline
+			Höhe $h$ in m & & & & & & \\
+			\hline
+			Mittelwert $\bar{t}$ in s & & & & & & \\
+			\hline
+			$g = \dfrac{2h}{\bar{t}^2}$ in $\frac{\text{m}}{\text{s}^2}$ & & & & & & \\
+			\hline
+		\end{tabular}
+	\end{center}
+	
+	\vspace{0.5cm}
+	
+	\begin{infobox}[title={\faIcon{info-circle} Berechnung der Messunsicherheit}]
+		\textbf{Mittelwert:} \quad $\displaystyle \bar{g} = \frac{1}{n} \sum_{i=1}^{n} g_i = \frac{g_1 + g_2 + \ldots + g_n}{n}$
+		
+		\hspace{1cm}\textit{Der Mittelwert ist der beste Schätzwert für den wahren Wert der Messgröße.}
+		
+		\vspace{0.3cm}
+		\textbf{Standardabweichung:} \quad $\displaystyle s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (g_i - \bar{g})^2}$
+		
+		\hspace{1cm}\textit{Die Standardabweichung beschreibt die Streuung der Einzelmessungen um den Mittelwert.}
+		
+		\vspace{0.3cm}
+		\textbf{Messunsicherheit des Mittelwerts:} \quad $\displaystyle \Delta \bar{g} = \frac{s}{\sqrt{n}}$
+		
+		\hspace{1cm}\textit{Die Messunsicherheit gibt an, in welchem Bereich der wahre Wert mit hoher}
+		
+		\hspace{1cm}\textit{Wahrscheinlichkeit (ca. 68\,\%) liegt. Sie wird kleiner, je mehr Messungen durchgeführt werden.}
+	\end{infobox}
+	
+	% ============================================
+	% Protokollbogen Seite 2
+	% ============================================
+	\newpage
+	
+	\subsection*{3. Berechnung}
+	
+	\vspace{5cm}
+	
+	\subsection*{4. Ergebnis}
+	
+	\begin{center}
+		\begin{tcolorbox}[colback=yellow!10!white, colframe=yellow!50!black, width=0.9\textwidth]
+			\centering
+			\textbf{Gemessene Erdbeschleunigung:}\\[0.4cm]
+			{\Large $g = \rule{3cm}{0.4pt} \pm \rule{2cm}{0.4pt}$ \si{\metre\per\second\squared}}
+		\end{tcolorbox}
+	\end{center}
+	
+	\vspace{0.3cm}
+	
+	\subsection*{5. Vergleich mit Literaturwert}
+	
+	Literaturwert: $g_{\text{Lit}} = \SI{9,81}{\metre\per\second\squared}$ \hfill Relative Abweichung: \rule{3cm}{0.4pt} \%
+	
+	\vspace{0.5cm}
+	
+	\subsection*{6. Fehlerquellen und Diskussion}
+	
+	\vspace{10cm}
+	
+
+	% ============================================
+	% Abgabevermerk (Rev. 1)
+	% ============================================
+	\vspace{0.4cm}
+	\begin{tcolorbox}[colback=yellow!8, colframe=black, boxrule=0.6pt, title={\faIcon{check-circle}\enspace Abgabevermerk -- wird vor Ort ausgefüllt}, fonttitle=\bfseries]
+		Abgegeben am \rule{2.8cm}{0.4pt} \enspace um \rule{2cm}{0.4pt} Uhr \hfill Sichtvermerk Lehrkraft: \rule{3.5cm}{0.4pt}
+
+		\vspace{0.15cm}
+		{\small\textit{Dieser Protokollbogen verbleibt in Ihrer \textbf{Praktikumsmappe}. Die vollständige Mappe wird am Ende des Schuljahres vorgelegt.} \hfill \scriptsize Rev.\,1}
+	\end{tcolorbox}
+
+\end{document}
