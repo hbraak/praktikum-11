@@ -43,4 +43,4 @@ Praktikumsanleitungen mit integrierten Protokollbögen für das 11. Schuljahr (P
 pdflatex <datei>.tex   # 2x ausführen; Bilder liegen im selben Ordner
 ```
 
-⚠️ **Repo ist privat** — `20260619_Praktikum_Drillachse_Auswertung` enthält eine Musterlösung.
+ℹ️ Hinweis: `20260619_Praktikum_Drillachse_Auswertung` enthält eine **Musterlösung** — Link nicht an SuS weitergeben.
