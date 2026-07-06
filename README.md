@@ -33,7 +33,9 @@ Praktikumsanleitungen mit integrierten Protokollbögen für das 11. Schuljahr (P
 
 ## Weitere Dateien
 
+- `Praktikumskonzept_11NP_SJ2025-26.pdf` — Zusammenfassung des didaktischen Konzepts (Rahmen, KI-sicheres Protokoll, Scaffolding, QS)
 - `Kompetenzmatrix_Praktika_SJ2025-26.pdf` — kompetenzorientierte Matrix aller Versuche (UF / E / K)
+- `Laborbuch_Praktikum11.docx` — das digitale Laborbuch als Word-Dokument (Stand der .md-Seiten)
 - `_Review_135min_Scaffolding.md` — didaktisches Review + Änderungsprotokoll Rev. 1 + offene Punkte
 - `logo.jpeg`, `fahrbahn.png`, `dewar.png` — von den .tex-Dateien referenzierte Bilder
 

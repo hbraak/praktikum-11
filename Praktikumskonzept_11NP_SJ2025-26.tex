@@ -1,0 +1,118 @@
+% Praktikumskonzept Physik 11NP — Zusammenfassung
+% Quellen: README.md (Didaktisches Konzept), _Review_135min_Scaffolding.md, Kompetenzmatrix
+\documentclass[11pt]{scrartcl}
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{scrlayer-scrpage}
+
+\pagestyle{scrheadings}
+\ihead{\includegraphics[height=1.1cm]{logo.jpeg}}
+\chead{Physik-Praktikum 11NP}
+\ohead{SJ 2025/26 · Rev.~1}
+\KOMAoptions{headsepline=true}
+
+\newtcolorbox{infobox}{colback=gray!8,colframe=gray!60,boxrule=0.6pt,arc=2pt,
+  left=6pt,right=6pt,top=4pt,bottom=4pt}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries Praktikumskonzept Physik -- Jahrgang 11 (11NP)}\\[2mm]
+  {\large Lore-Lorentz-Schule Düsseldorf · Physiktechnik · Schuljahr 2025/26}
+\end{center}
+
+\section*{1\quad Ziel und Rahmen}
+Das Praktikum vermittelt experimentelle Grundkompetenzen (Messen, Protokollieren,
+Auswerten, Beurteilen) in neun aufeinander aufbauenden Versuchen über beide
+Halbjahre. Organisatorischer Rahmen:
+\begin{itemize}
+  \item 12--14 Schülerinnen und Schüler, Arbeit in 3er-/4er-Gruppen (3--5 Gruppen)
+  \item \textbf{135 Minuten} pro Versuch -- Durchführung \emph{und} vollständige Dokumentation
+  \item einheitliche Anleitungen mit integrierten Protokollbögen (LaTeX-Vorlagen im Repository)
+\end{itemize}
+
+\section*{2\quad Dokumentation vor Ort -- KI-sicheres Protokoll}
+\begin{infobox}
+Das Protokoll entsteht \textbf{vollständig während der Praktikumsstunde} und wird am
+Ende abgegeben (Abgabevermerk mit Uhrzeit und Sichtvermerk auf jedem Bogen).
+Es gibt \emph{keine} häusliche Ausarbeitung -- damit sind KI-generierte Berichte
+konstruktiv ausgeschlossen.
+\end{infobox}
+Alle Protokollbögen werden in einer \textbf{Praktikumsmappe} gesammelt; die
+vollständige Mappe wird am Ende des Schuljahres vorgelegt. Arbeitsteilige
+Messungen mit gruppenindividuellen Daten (z.\,B. Wärmeversuch) erhöhen
+zusätzlich die Authentizität der Ergebnisse.
+
+\section*{3\quad Scaffolding mit Progression}
+Pro Versuch kommt genau \textbf{eine} neue Schwierigkeit hinzu; die Hilfestellung
+beim Diagrammzeichnen wird schrittweise abgebaut:
+
+\begin{center}
+\begin{tabular}{@{}cll@{}}
+\toprule
+\textbf{Stufe} & \textbf{Diagramm-Scaffold} & \textbf{Versuche} \\
+\midrule
+1 & Achsen und Zahlenskala vorgegeben        & E1, E2 \\
+2 & Achsen beschriftet, Skalierung selbst wählen & E4b, E5, E6 \\
+3 & nur leeres Gitter                        & Federpendel \\
+4 & Millimeterpapier, komplett selbstständig & Drillachse \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Differenzierung nach oben über gekennzeichnete $\bigstar$-Zusatzaufgaben;
+Entlastung über schlanke Versuchsvarianten (z.\,B. Elektrolyseur) und
+arbeitsteilige Messprogramme bei zeitkritischen Versuchen.
+
+\section*{4\quad Versuchsübersicht}
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{HJ} & \textbf{Versuch} & \textbf{Schwerpunkt} \\
+\midrule
+11.1 & E1 Konstante Geschwindigkeit & $t$-$s$-Diagramm, Messreihe, Tabelle \\
+11.1 & E2 Konstante Beschleunigung  & Linearisierung über $t^2$ \\
+11.1 & E3 Erdbeschleunigung (freier Fall) & Messunsicherheit, Mittelwert \\
+11.1 & E4 Fadenpendel               & Schwingungsdauer, Parametereinfluss \\
+11.1 & E4b Pendel $\rightarrow g$   & $T^2$-$l$-Linearisierung, Steigungsauswertung \\
+11.1 & E5 Spezifische Wärmekapazität & Kalorimetrie (Dewar), arbeitsteilige Messung \\
+11.1 & E6 Elektrolyseur             & Wirkungsgrad, Energieumwandlung \\
+11.2 & F1 Federpendel               & $D$ statisch/dynamisch, eigenes Diagramm \\
+11.2 & F2 Drillachse                & Trägheitsmoment, Extremgeraden, Fehlerbalken \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{5\quad Kompetenzorientierung}
+Jeder Versuch ist den Kompetenzbereichen \textbf{Umgang mit Fachwissen (UF)},
+\textbf{Erkenntnisgewinnung (E)} und \textbf{Kommunikation (K)} zugeordnet.
+Die vollständige Zuordnung zeigt die \emph{Kompetenzmatrix}
+(\texttt{Kompetenzmatrix\_Praktika\_SJ2025-26.pdf}) auf einen Blick.
+
+\section*{6\quad Qualitätssicherung und Weiterentwicklung}
+\begin{itemize}
+  \item \textbf{Didaktisches Review} aller Anleitungen gegen die Kriterien
+        135-min-Machbarkeit, Scaffolding und Progression
+        (\texttt{\_Review\_135min\_Scaffolding.md}); zeitkritische Versuche
+        (Wärme, Drillachse) wurden in Rev.~1 entschärft.
+  \item \textbf{Digitales Laborbuch}: gesammeltes Praxiswissen der Lehrkräfte je
+        Versuch (Zeitplanung, Gerätetricks, Stolperfallen, Jahrgangsnotizen) --
+        gepflegt im Repository, zusätzlich als Word-Dokument verfügbar.
+  \item \textbf{Revisionszyklus}: Erfahrungen des Jahrgangs fließen nach jedem
+        Praktikumstag in Laborbuch und Anleitungen ein (Rev.-Stände im Repository).
+\end{itemize}
+
+\vfill
+\begin{center}\small
+Repository: \texttt{github.com/hbraak/praktikum-11} \quad·\quad
+Webübersicht: \texttt{hbraak.github.io/praktikum-11}
+\end{center}
+
+\end{document}
