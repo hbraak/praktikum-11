@@ -97,3 +97,23 @@ Vorschlag für ein 4-Stufen-Raster, das je Versuch ausgewiesen wird:
 | Drillachse_Auswertung (Musterlösung): unverändert gelassen — enthält bewusst das fertige Beispieldiagramm | — | ✅ |
 
 **Noch offen** (aus dem Review, nicht Teil von Rev. 1): Wärme Teil 2 arbeitsteilig, Drillachse Wiederholungen 3→2, Zeitleiste aufs Deckblatt, E3 straffen, E1 Aufgabe 6 → ★, gruppenindividuelle Parameter.
+
+---
+
+## Rückmeldung FK Technik (Juli 2026, übermittelt 07.07.2026)
+
+Beschluss der anwesenden PH-Lehrkräfte der FK Technik (Konsens):
+
+1. **Konzept wird so übernommen.** ✅
+2. **Ergänzung — zusätzliche Leistungskontrollen** (optional, nicht zu jedem Versuch, abhängig von der Lehrkraft): z. B. Präsentation, Plakat, Kolloquium, praktische Übung.
+3. **Praktikumsmappe obligatorisch:** Anlegen einer Mappe zum Abheften der Messprotokolle ist verpflichtend (bestätigt/verschärft den bestehenden Mappen-Baustein des Konzepts).
+4. **Ausblick nächstes SJ:** Die PH-Lehrkräfte gehen gemeinsam alle Versuche der **Jg. 12 und 13** durch und legen fest:
+   - die **Progression** von Versuch zu Versuch,
+   - die **entscheidenden Erkenntnisse** je Versuch → danach wird der Schwerpunkt des Versuchs gestaltet.
+5. **Organisation:** Anstelle der Protokollentlastungsstunden soll ein **regelmäßiges gemeinsames Treffen** etabliert werden.
+
+**Daraus folgende To-dos für das Repo (→ Rev. 2):**
+- [ ] Konzept-Dokument (`Praktikumskonzept_11NP_SJ2025-26.tex`) um Abschnitt „Leistungskontrollen (optional)" ergänzen
+- [ ] Mappe im Konzept + auf Abgabevermerk-Boxen als **obligatorisch** kennzeichnen
+- [ ] README: Status „von FK Technik übernommen" vermerken
+- [ ] Vorbereitung SJ 2026/27: Gerüst für Versuchsübersicht Jg. 12/13 (Progression + Kernerkenntnis je Versuch) anlegen
