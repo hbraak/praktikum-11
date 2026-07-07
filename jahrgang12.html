@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physik-Praktikum 12 — Grundgerüst — Lore-Lorentz-Schule</title>
+<style>
+  :root {
+    --bg: #0f172a; --card: #1e293b; --card-hover: #263449;
+    --text: #e2e8f0; --muted: #94a3b8; --accent: #38bdf8;
+    --accent2: #fbbf24; --green: #34d399; --red: #f87171; --violet: #a78bfa;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  .hero {
+    background: linear-gradient(135deg, #0f172a 0%, #7c2d12 60%, #b45309 100%);
+    padding: 3.5rem 2rem 2.5rem; text-align: center; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 20% 30%, rgba(251,191,36,0.15) 0, transparent 40%),
+                      radial-gradient(circle at 80% 70%, rgba(56,189,248,0.12) 0, transparent 40%);
+  }
+  .hero h1 { font-size: 2.2rem; position: relative; }
+  .hero p.sub { color: #fde68a; margin-top: 0.5rem; font-size: 1.1rem; position: relative; }
+  .hero .pills { margin-top: 1.4rem; display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; position: relative; }
+  .pill { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25);
+    padding: 0.35rem 1rem; border-radius: 999px; font-size: 0.85rem; backdrop-filter: blur(4px); }
+  .container { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+  .draft {
+    background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.45);
+    border-radius: 14px; padding: 1rem 1.2rem; font-size: 0.9rem; margin-top: 1.5rem;
+  }
+  .draft b { color: var(--accent2); }
+  h2.section { font-size: 1.35rem; margin: 2.2rem 0 1.2rem; display: flex; align-items: center; gap: 0.6rem; }
+  h2.section::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to right, #334155, transparent); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.1rem; }
+  .card { background: var(--card); border-radius: 16px; padding: 1.3rem 1.3rem 1.1rem;
+    border: 1px solid #334155; display: flex; flex-direction: column; }
+  .card .top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+  .card .emoji { font-size: 2rem; line-height: 1; }
+  .card h3 { font-size: 1.05rem; margin: 0.6rem 0 0.3rem; }
+  .card p { font-size: 0.85rem; color: var(--muted); }
+  .card .kern { font-size: 0.83rem; margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px dashed #334155; }
+  .card .kern b { color: var(--green); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; display: block; }
+  .card .kern.neu b { color: var(--accent); }
+  .badge { font-size: 0.7rem; font-weight: 600; padding: 0.15rem 0.6rem; border-radius: 999px; white-space: nowrap; }
+  .badge.hj1 { background: rgba(56,189,248,0.15); color: var(--accent); border: 1px solid rgba(56,189,248,0.4); }
+  .badge.hj2 { background: rgba(167,139,250,0.15); color: var(--violet); border: 1px solid rgba(167,139,250,0.4); }
+  .badge.entwurf { background: rgba(251,191,36,0.15); color: var(--accent2); border: 1px solid rgba(251,191,36,0.4); margin-left: 0.3rem; }
+  ul.offen { margin: 0.5rem 0 0 1.2rem; font-size: 0.9rem; color: var(--muted); }
+  ul.offen li { margin-bottom: 0.35rem; }
+  .nav { margin-top: 2.5rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .btn { text-decoration: none; font-size: 0.85rem; font-weight: 600;
+    padding: 0.5rem 1rem; border-radius: 8px; }
+  .btn.pdf { background: var(--accent); color: #082f49; }
+  .btn.extra { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  footer { text-align: center; color: #64748b; font-size: 0.8rem; padding: 2rem 1rem 2.5rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🧲 Physik-Praktikum 12</h1>
+  <p class="sub">E-Lehre · Felder · Induktion — Grundgerüst</p>
+  <div class="pills">
+    <span class="pill">🚧 In Planung — SJ 2026/27</span>
+    <span class="pill">⏱ 135 Minuten</span>
+    <span class="pill">📁 Praktikumsmappe</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="draft">
+    <b>🚧 Entwurf / Grundgerüst.</b> Die Versuchsliste stammt aus dem vorhandenen Fundus; Kernerkenntnisse
+    und Progression sind <b>Vorschläge</b>. Die Festlegung erfolgt in den gemeinsamen Treffen der
+    Physik-Lehrkräfte im SJ 2026/27 (gemäß Beschlussvorlage FK Technik vom 07.07.2026).
+    Anleitungen im Stil des 11er-Praktikums folgen nach der Abstimmung.
+  </div>
+
+  <h2 class="section">🧭 Anschluss an Jahrgang 11</h2>
+  <p style="font-size:0.92rem; color:var(--muted);">
+    Das Diagramm-Scaffolding ist nach der Drillachse (Stufe 4) abgebaut — Tabellen und Diagramme entstehen
+    ab jetzt vollständig selbstständig. Die Progression verlagert sich auf <b style="color:var(--text)">Methoden</b>:
+    computergestützte Messwerterfassung, Versuchsplanung mit mehreren Parametern. Grundsatz bleibt:
+    <b style="color:var(--text)">eine neue Hürde pro Versuch</b>, Protokoll komplett vor Ort.
+  </p>
+
+  <h2 class="section">🔌 Halbjahr 12.1 — E-Lehre &amp; Ladungsträger</h2>
+  <div class="grid">
+
+    <div class="card">
+      <div class="top"><span class="emoji">📈</span><div><span class="badge hj1">12.1</span><span class="badge entwurf">Entwurf</span></div></div>
+      <h3>Diode &amp; Triode: Kennlinien</h3>
+      <p>Kennlinien mit Cassy aufnehmen; Steuerwirkung des Gitters bei der Triode untersuchen.</p>
+      <div class="kern"><b>Kernerkenntnis (Vorschlag)</b>Kennlinie = Verhalten eines nichtlinearen Bauteils; das Gitter steuert den Anodenstrom.</div>
+      <div class="kern neu"><b>Neue Methode</b>Erste computergestützte Messwerterfassung (Cassy); Kennlinien lesen statt Gerade fitten.</div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="emoji">⚖️</span><div><span class="badge hj1">12.1</span><span class="badge entwurf">Entwurf</span></div></div>
+      <h3>Stromwaage</h3>
+      <p>Kraft auf den stromdurchflossenen Leiter im Magnetfeld messen und B bestimmen.</p>
+      <div class="kern"><b>Kernerkenntnis (Vorschlag)</b>F ∝ I·l·B — die Messung definiert die magnetische Flussdichte.</div>
+      <div class="kern neu"><b>Neue Methode</b>Linearisierung (F-I-Diagramm) jetzt ganz ohne Vorgaben; systematische vs. zufällige Fehler.</div>
+    </div>
+
+  </div>
+
+  <h2 class="section">🧲 Halbjahr 12.2 — Felder &amp; Induktion</h2>
+  <div class="grid">
+
+    <div class="card">
+      <div class="top"><span class="emoji">🎛️</span><div><span class="badge hj2">12.2</span><span class="badge entwurf">Entwurf</span></div></div>
+      <h3>Hall-Effekt</h3>
+      <p>Hall-Spannung in Abhängigkeit von Strom und B-Feld; Vorzeichen verrät die Ladungsträgerart.</p>
+      <div class="kern"><b>Kernerkenntnis (Vorschlag)</b>U<sub>H</sub> ∝ I·B — Ladungsträger im Magnetfeld werden abgelenkt.</div>
+      <div class="kern neu"><b>Neue Methode</b>Versuchsplanung: eine Größe variieren, alle anderen konstant halten.</div>
+    </div>
+
+    <div class="card">
+      <div class="top"><span class="emoji">🌀</span><div><span class="badge hj2">12.2</span><span class="badge entwurf">Entwurf</span></div></div>
+      <h3>Induktion</h3>
+      <p>Mit dem Induktionsgerät n, A und dB/dt getrennt untersuchen und zum Induktionsgesetz zusammenführen.</p>
+      <div class="kern"><b>Kernerkenntnis (Vorschlag)</b>U<sub>ind</sub> ∝ Änderungsrate des magnetischen Flusses.</div>
+      <div class="kern neu"><b>Neue Methode</b>Hypothese → gezielte Teilmessungen → Synthese zum Gesetz.</div>
+    </div>
+
+  </div>
+
+  <h2 class="section">❓ Offen — für das erste gemeinsame Treffen</h2>
+  <ul class="offen">
+    <li>Versuchsliste bestätigen/ergänzen (z.&nbsp;B. e/m-Bestimmung, Fadenstrahlrohr?)</li>
+    <li>Kernerkenntnis je Versuch im Wortlaut festlegen → Schwerpunkt der Anleitung</li>
+    <li>Cassy-Einführung als eigene Station? Gerätesätze für 3–5 Gruppen ausreichend?</li>
+    <li>135-min-Machbarkeit je Versuch (Erfahrungswerte der Kolleginnen und Kollegen)</li>
+    <li>Zuordnung optionaler Leistungskontrollen (Präsentation, Plakat, Kolloquium, prakt. Übung)</li>
+  </ul>
+
+  <div class="nav">
+    <a class="btn extra" href="index.html">← Jahrgang 11</a>
+    <a class="btn extra" href="jahrgang13.html">Jahrgang 13 →</a>
+    <a class="btn pdf" href="https://github.com/hbraak/praktikum-11/blob/main/Progression_Jg12-13_Entwurf.md">📋 Progressionsentwurf (Diskussionsgrundlage)</a>
+  </div>
+
+</div>
+
+<footer>
+  Physik-Praktikum 12 (Grundgerüst) · Lore-Lorentz-Schule Düsseldorf · Entwurf, Stand 07.07.2026<br>
+  <a href="index.html">Zur Übersicht Jahrgang 11 →</a>
+</footer>
+
+</body>
+</html>
