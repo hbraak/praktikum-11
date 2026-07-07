@@ -1,7 +1,7 @@
 # Progression Jg. 12/13 — Gerüst (ENTWURF / Diskussionsgrundlage)
 
 **Zweck:** Grundlage für die gemeinsamen Treffen der Physik-Lehrkräfte im SJ 2026/27
-(Beschluss FK Technik, Juli 2026): alle Versuche der Jahrgänge 12 und 13 durchgehen und
+(gemäß Beschlussvorlage FK Technik vom 07.07.2026): alle Versuche der Jahrgänge 12 und 13 durchgehen und
 festlegen, (a) was die **Progression** von Versuch zu Versuch ist und (b) welche
 **Erkenntnisse** je Versuch die entscheidenden sind — der Schwerpunkt des Versuchs wird
 danach gestaltet.

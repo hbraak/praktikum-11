@@ -100,11 +100,12 @@ Vorschlag für ein 4-Stufen-Raster, das je Versuch ausgewiesen wird:
 
 ---
 
-## Rückmeldung FK Technik (Juli 2026, übermittelt 07.07.2026)
+## Rückmeldung FK Technik — Beschlussvorlage vom 07.07.2026
 
-Beschluss der anwesenden PH-Lehrkräfte der FK Technik (Konsens):
+**Kein offizieller FK-Beschluss**, sondern eine **Beschlussvorlage** (Stand 07.07.2026):
+Konsens der anwesenden PH-Lehrkräfte der FK Technik. Der offizielle Beschluss steht noch aus.
 
-1. **Konzept wird so übernommen.** ✅
+1. **Konzept soll so übernommen werden.** ✅
 2. **Ergänzung — zusätzliche Leistungskontrollen** (optional, nicht zu jedem Versuch, abhängig von der Lehrkraft): z. B. Präsentation, Plakat, Kolloquium, praktische Übung.
 3. **Praktikumsmappe obligatorisch:** Anlegen einer Mappe zum Abheften der Messprotokolle ist verpflichtend (bestätigt/verschärft den bestehenden Mappen-Baustein des Konzepts).
 4. **Ausblick nächstes SJ:** Die PH-Lehrkräfte gehen gemeinsam alle Versuche der **Jg. 12 und 13** durch und legen fest:

@@ -2,13 +2,13 @@
 
 Praktikumsanleitungen mit integrierten Protokollbögen für das 11. Schuljahr (Physiktechnik, Lore-Lorentz-Schule Düsseldorf). Stand: **Rev. 2** (Juli 2026).
 
-> ✅ **Status:** Das Konzept wurde im Juli 2026 von den Physik-Lehrkräften der FK Technik im Konsens **übernommen** — ergänzt um optionale Leistungskontrollen (Präsentation, Plakat, Kolloquium, praktische Übung; nicht zu jedem Versuch, lehrkraftabhängig) und die **obligatorische Praktikumsmappe**. Ausblick SJ 2026/27: gemeinsame Festlegung von Progression und Kernerkenntnissen für die Versuche der Jg. 12/13 (siehe `Progression_Jg12-13_Entwurf.md`).
+> 📋 **Status:** **Beschlussvorlage vom 07.07.2026** — Konsens der anwesenden Physik-Lehrkräfte der FK Technik, das Konzept zu übernehmen; der offizielle FK-Beschluss steht noch aus. Ergänzungen laut Vorlage: optionale Leistungskontrollen (Präsentation, Plakat, Kolloquium, praktische Übung; nicht zu jedem Versuch, lehrkraftabhängig) und die **obligatorische Praktikumsmappe**. Ausblick SJ 2026/27: gemeinsame Festlegung von Progression und Kernerkenntnissen für die Versuche der Jg. 12/13 (siehe `Progression_Jg12-13_Entwurf.md`).
 
 ## Didaktisches Konzept
 
 - **Dokumentation vor Ort**: Das Protokoll entsteht vollständig während der 135-minütigen Praktikumsstunde und wird am Ende abgegeben (Abgabevermerk mit Uhrzeit + Sichtvermerk auf jedem Bogen). Keine Hausarbeit → keine KI-generierten Berichte.
-- **Praktikumsmappe (obligatorisch, Beschluss FK Technik)**: Alle Messprotokolle werden abgeheftet; die vollständige Mappe wird am Ende des Schuljahres vorgelegt.
-- **Optionale Leistungskontrollen** (Beschluss FK Technik): nicht zu jedem Versuch, Form abhängig von der Lehrkraft — z. B. Präsentation, Plakat, Kolloquium, praktische Übung.
+- **Praktikumsmappe (obligatorisch, gemäß Beschlussvorlage FK Technik)**: Alle Messprotokolle werden abgeheftet; die vollständige Mappe wird am Ende des Schuljahres vorgelegt.
+- **Optionale Leistungskontrollen** (gemäß Beschlussvorlage FK Technik): nicht zu jedem Versuch, Form abhängig von der Lehrkraft — z. B. Präsentation, Plakat, Kolloquium, praktische Übung.
 - **Scaffolding mit Progression** (pro Versuch nur EINE neue Schwierigkeit):
 
 | Stufe | Diagramm-Scaffold | Versuche |
